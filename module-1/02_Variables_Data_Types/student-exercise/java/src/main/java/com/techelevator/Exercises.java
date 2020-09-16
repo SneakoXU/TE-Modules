@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.util.PrimitiveIterator.OfDouble;
+
 public class Exercises {
 
 	public static void main(String[] args) {
@@ -544,6 +546,18 @@ public class Exercises {
         Challenge: How many days will it take the pair to paint 623 rooms assuming they work 8 hours a day?.
         */
 		
+		int totalFeetPerRoom = 168;
+		double billHourlyRate = 168/2.15;
+		double jillHourlyRate = 168/1.90;
+		double totalHourlyRate = billHourlyRate + jillHourlyRate;
+		int numberOfRooms = 5;
+		int totalFeetOfAllRooms = numberOfRooms*totalFeetPerRoom;
+		double feetPerRoom = (double) totalFeetOfAllRooms;
+		double timeToPaint = feetPerRoom/totalHourlyRate;
+		System.out.println(timeToPaint);
+		//System.out.format("%.2f" + " hours%n",timeToPaint);
+		
+		
 		
 		
 		
@@ -555,6 +569,14 @@ public class Exercises {
         with a period.
         Example: "Hopper, Grace B."
         */
+		
+		String firstName = "Niko";
+		String lastName = "Suntay";
+		String middleInitial = "M";
+		String formalName = lastName + ", " + firstName + " " + middleInitial + ".";
+		System.out.println(formalName);
+		
+		
 
         /*
         The distance between New York and Chicago is 800 miles, and the train has already travelled 537 miles.
@@ -562,6 +584,15 @@ public class Exercises {
         Hint: The percent completed is the miles already travelled divided by the total miles.
         Challenge: Display as an integer value between 0 and 100 using casts.
         */
+		
+		double distanceNewYorkToChicago = 800;
+		double distanceTravelled = 537;
+		double percentTripCompleted = 100 * (distanceTravelled/distanceNewYorkToChicago);
+		System.out.println(percentTripCompleted);
+		int tripCastToInt = (int) percentTripCompleted;
+		System.out.println(tripCastToInt);
+		
+		
 
 
 	}
