@@ -67,7 +67,7 @@ public class Lecture {
     	boolean result = false;
     	int value = 3;
         if (value == 1) {
-            result = true;
+            result = true;a^b
         }
 
         return result;

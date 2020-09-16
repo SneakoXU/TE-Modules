@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 public class Exercises {
 
 	/*
@@ -10,8 +12,15 @@ public class Exercises {
 	 sleepIn(false, true) → true
 	 */
 	public boolean sleepIn(boolean weekday, boolean vacation) {
-		return false;
-	}
+		boolean result = true;
+		if(weekday && !vacation) {
+			result = false;
+		}
+		return result;
+		}
+		
+		
+	
 
 	/*
 	 2. We have two monkeys, a and b, and the parameters aSmile and bSmile indicate if each is smiling.
@@ -22,7 +31,11 @@ public class Exercises {
 	 monkeyTrouble(true, false) → false
 	 */
 	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-		return false;
+		boolean result = true;
+		if((aSmile && !bSmile) || (!aSmile && bSmile)) {
+			result = false;
+		}
+		return result;
 	}
 
 	/*
@@ -32,7 +45,14 @@ public class Exercises {
 	 sumDouble(2, 2) → 8
 	 */
 	public int sumDouble(int a, int b) {
-		return 0;
+		int result;
+		
+		if(a != b) {
+			result = (a + b);
+		}else {
+			result = 2*(a+b);
+		}
+		return result;
 	}
 
 	/*
@@ -45,7 +65,12 @@ public class Exercises {
 	 diff21(-10) → 31
 	 */
 	public int diff21(int n) {
-		return 0;
+		int result;
+		if(n>21) {
+			result = (21-n) *-2;
+		}result = (21-n);
+		
+		return result;
 	}
 
 	/*
@@ -57,7 +82,12 @@ public class Exercises {
 	 parrotTrouble(false, 6) → false
 	 */
 	public boolean parrotTrouble(boolean talking, int hour) {
-		return false;
+		
+		boolean result = false;
+		if(talking && (hour < 7 || hour > 20)){
+			result = true;
+		}
+		return result;
 	}
 
 	/*
@@ -67,7 +97,11 @@ public class Exercises {
 	 makes10(1, 9) → true
 	 */
 	public boolean makes10(int a, int b) {
-		return false;
+		boolean result = false;
+		if((a==10 || b==10)||((a+b)==10)) {
+			result = true;
+		}
+		return result;
 	}
 
 	/*
@@ -78,6 +112,12 @@ public class Exercises {
 	 posNeg(-4, -5, true) → true
 	 */
 	public boolean posNeg(int a, int b, boolean negative) {
+		boolean result = true;
+		if() {
+			
+			
+		}
+		
 		return false;
 	}
 
@@ -89,7 +129,11 @@ public class Exercises {
 	 or35(8) → false
 	 */
 	public boolean or35(int n) {
-		return false;
+		boolean result = false;
+		if((n%3==0) || (n%5==0)) {
+			result = true;
+		}
+		return result;
 	}
 
 	/*
@@ -99,7 +143,11 @@ public class Exercises {
 	 icyHot(2, 120) → false
 	 */
 	public boolean icyHot(int temp1, int temp2) {
-		return false;
+		boolean result = false;
+		if((temp1 < 0 && temp2 >100) ||(temp1>100 && temp2<0)) {
+			result = true;
+		}
+		return result;
 	}
 
 	/*
@@ -109,7 +157,11 @@ public class Exercises {
 	 in1020(8, 99) → false
 	 */
 	public boolean in1020(int a, int b) {
-		return false;
+		boolean result = false;
+		if(((a>=10)&&(a<=20)) || (b>=10)&&(b<=20)) {
+			result = true;
+		}
+		return result;
 	}
 
 	/*
@@ -120,7 +172,11 @@ public class Exercises {
 	 hasTeen(20, 10, 13) → true
 	 */
 	public boolean hasTeen(int a, int b, int c) {
-		return false;
+		boolean result = false;
+		if((a>=13 && a<=19) || (b>=13 && b<=19) || (c>=13 && c<=19)) {
+			result = true;
+		}
+		return result;
 	}
 
 	/*
@@ -131,7 +187,11 @@ public class Exercises {
 	 loneTeen(13, 13) → false
 	 */
 	public boolean loneTeen(int a, int b) {
-		return false;
+		boolean result = false;
+		if((a>=13 && a<=19) ^ (b>=13 && b<=19)) {
+			result = true;
+		}
+		return result;
 	}
 
 	/*
@@ -141,7 +201,13 @@ public class Exercises {
 	 intMax(3, 2, 1) → 3
 	 */
 	public int intMax(int a, int b, int c) {
-		return 0;
+		int result;
+		if(a >= b && a >= c){
+			result = a;
+		}else if(b>=a && b>=c) {
+			result = b;
+		}else result = c;
+		return result;
 	}
 
 	/*
@@ -152,7 +218,15 @@ public class Exercises {
 	 in3050(40, 50) → true
 	 */
 	public boolean in3050(int a, int b) {
-		return false;
+		boolean result;
+		if((a >= 30 && a <= 40)&&(b >= 30 && b <= 40)) {
+			result = true;
+		}else if ((a >= 40 && a <= 50)&&(b >= 40 && b <= 50)){
+			result = true;
+		}else {
+		result = false;
+		} 
+		return result;
 	}
 
 	/*
@@ -163,7 +237,16 @@ public class Exercises {
 	 max1020(11, 9) → 11
 	 */
 	public int max1020(int a, int b) {
-		return 0;
+		int result;
+		if((a >= 10 && a <= 20) && (a>b)){
+			result = a;
+		}else if ((b >= 10 && b <= 20) && (b>a)){
+			result = b;
+		//need to return a if b>a but out of range
+		}else {
+			result = 0;
+		}
+		return result;
 	}
 
 	/*
@@ -176,6 +259,8 @@ public class Exercises {
 	 cigarParty(70, true) → true
 	 */
 	public boolean cigarParty(int cigars, boolean isWeekend) {
+		
+		
 		return false;
 	}
 
