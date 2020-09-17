@@ -8,6 +8,7 @@ public class Examples {
 		boolean result;
 
 		System.out.println("****************************");
+		System.out.println(18%20);
 		System.out.println("*** COMPARISON OPERATORS ***");
 		System.out.println("****************************");
 		System.out.println();

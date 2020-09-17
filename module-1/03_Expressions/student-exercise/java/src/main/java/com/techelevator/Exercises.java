@@ -458,9 +458,31 @@ public class Exercises {
 	 less20(19) → true
 	 less20(20) → false
 	 */
+	
+	
+	
+	//WRONG
+	
 	public boolean less20(int n) {
+		boolean result = false;
+		if(n>0) {
+			if(n<20) {
+				result = 
+			}
+			if((n%20==1 || n%20==2)){
+				result = true;}
+			else if (n%20==(-1) || n%20==(-2)){ 
+			result = true;}
+			else {
+				result = false;
+			}
+			return result;
+		}
 		
-		return false;
+		else {
+			result = false;
+		}
+		return result;
 	}
 
 	/*
