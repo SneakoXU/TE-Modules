@@ -520,6 +520,13 @@ public class Exercises {
 	 answerCell(true, false, false) → false
 	 */
 	public boolean answerCell(boolean isMorning, boolean isMom, boolean isAsleep) {
+		boolean result = false;
+		if(isMorning) {
+			if(isMom) {
+				result = true;
+			}
+			
+		}
 		return false;
 	}
 
