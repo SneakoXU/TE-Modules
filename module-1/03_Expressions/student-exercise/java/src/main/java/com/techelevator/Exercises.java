@@ -522,12 +522,15 @@ public class Exercises {
 	public boolean answerCell(boolean isMorning, boolean isMom, boolean isAsleep) {
 		boolean result = false;
 		if(isMorning) {
-			if(isMom) {
+			if(isMom && !isAsleep) {
 				result = true;
+			}else{
+				result = false;
 			}
-			
-		}
-		return false;
+			return result;
+		}else if(!isAsleep) {
+			result = true;
+		}return result;
 	}
 
 	/*
@@ -540,6 +543,7 @@ public class Exercises {
 	 teaParty(20, 6) → 2
 	 */
 	public int teaParty(int tea, int candy) {
+		
 		return 0;
 	}
 
