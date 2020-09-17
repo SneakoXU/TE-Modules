@@ -234,9 +234,9 @@ public class Exercises {
 	 */
 	public int max1020(int a, int b) {
 		int result;
-		if((a >= 10 && a <= 20) && ((a>b) || (b<10 || b>20))){
+		if((a >= 10 && a <= 20) && ((a>b) || (b>20))){
 			result = a;
-		}else if ((b >= 10 && b <= 20) && ((b>a) || (a<10 || a>20))){
+		}else if ((b >= 10 && b <= 20) && ((b>a) || (a>20))){
 			result = b;
 		}else {
 			result = 0;
@@ -277,7 +277,16 @@ public class Exercises {
 	 dateFashion(5, 5) → 1
 	 */
 	public int dateFashion(int you, int date) {
-		return 0;
+		int result = 0;
+		if(you <=2 || date <= 2) {
+			result = 0;
+		}else if(you >= 8 || date >= 8) {
+			result = 2;
+			}
+		else{
+			result = 1;
+		}
+		return result;
 	}
 
 	/*
@@ -322,8 +331,27 @@ public class Exercises {
      yourCakeAndEatItToo(11.00, false) → "special"
      */
     public String yourCakeAndEatItToo(double mealAmount, boolean isBirthday) {
-    	
-        return "";
+    	String dessertCat = "";
+    	if(!isBirthday) {
+    		if(mealAmount <= 10.00) {
+    			dessertCat = "standard";
+    		}else if(mealAmount <= 15.00 && mealAmount > 10.00) {
+    			dessertCat = "special";
+    		}else{
+    			dessertCat = "ginormous";
+    		}
+    		return dessertCat;
+    	}if (isBirthday) {
+    		if( (mealAmount + 5.00) <= 10.00) {
+    			dessertCat = "standard";
+    		}else if( (mealAmount + 5.00) <= 15.00 && (mealAmount + 5.00) > 10.00) {
+    			dessertCat = "special";
+    		}else{
+    			dessertCat = "ginormous";
+    		}
+    		return dessertCat;
+    	}
+        return dessertCat;
     }
 
 	/*
@@ -459,31 +487,22 @@ public class Exercises {
 	 less20(20) → false
 	 */
 	
-	
-	
-	//WRONG
-	
 	public boolean less20(int n) {
 		boolean result = false;
 		if(n>0) {
-			if(n<20) {
-				result = 
-			}
-			if((n%20==1 || n%20==2)){
-				result = true;}
-			else if (n%20==(-1) || n%20==(-2)){ 
-			result = true;}
-			else {
+			if(n%20 < 20 && n%20 >= 18) {
+				result = true;
+			}else {
 				result = false;
+			}return result;
 			}
-			return result;
-		}
-		
 		else {
 			result = false;
 		}
 		return result;
-	}
+		}
+		
+
 
 	/*
 	 27. Given a non-negative number "num", return true if num is within 2 of a multiple of 10. Note: (a % b)
@@ -493,8 +512,15 @@ public class Exercises {
 	 nearTen(19) → true
 	 */
 	public boolean nearTen(int num) {
-		
-		return false;
+		boolean result = false;
+		if(num>0) {
+			if( (num%10<=2 && num%10>=0) || (num%10 <= 9 && num%10 >= 8) ) {
+				result = true;
+			}else {
+				result = false;
+			}
+		}
+		return result;
 	}
 
 	/*
@@ -543,8 +569,18 @@ public class Exercises {
 	 teaParty(20, 6) → 2
 	 */
 	public int teaParty(int tea, int candy) {
-		
-		return 0;
+		int outcome = 0;
+		if ( (tea >= 5 && candy >= 5) ) {
+			if( (tea >= (candy *2)) || (candy >= (tea * 2)) ) {
+				outcome = 2;
+			}else {
+				outcome = 1;
+			}
+			return outcome;
+		}if ( tea < 5 || candy < 5 ) {
+			outcome = 0;
+		}
+		return outcome;
 	}
 
 	/*
@@ -554,7 +590,13 @@ public class Exercises {
 	 twoAsOne(3, 2, 2) → false
 	 */
 	public boolean twoAsOne(int a, int b, int c) {
-		return false;
+		boolean result = false;
+		if( ((a+b) == c) || ((a+c) == b) ) {
+			result = true;
+		}if ( ((b+c) == a) ) {
+			result = true;
+		}
+		return result;
 	}
 
 	/*
@@ -565,7 +607,23 @@ public class Exercises {
 	 inOrder(1, 1, 2, true) → true
 	 */
 	public boolean inOrder(int a, int b, int c, boolean bOk) {
-		return false;
+		
+		boolean result = false;
+		//b > a && c > b return true
+		if(!bOk) {
+		 if ( b>a && c>b ) {
+			result = true;
+		 }else{
+			result = false;
+		 }
+		 return result;
+		}
+		else if(c>b) {
+			result = true;
+		}else {
+			result = false;
+		}
+		return result;
 	}
 
 	/*
@@ -577,7 +635,20 @@ public class Exercises {
 	 inOrderEqual(5, 5, 7, true) → true
 	 */
 	public boolean inOrderEqual(int a, int b, int c, boolean equalOk) {
-		return false;
+		boolean result = false;
+		if(equalOk){
+			if(a <= b && b <= c) {
+				result = true;
+			}else {
+				result = false;
+			}return result;
+		}else {
+			if(a >= b || b >= c) {
+				result = false;
+			}else{
+				result = true;
+			}return result;
+		}
 	}
 
 	/*
@@ -588,9 +659,23 @@ public class Exercises {
 	 loneSum(3, 3, 3) → 0
 	 */
 	public int loneSum(int a, int b, int c) {
-		return 0;
-	}
-
+		int sumOfInts = 0;
+		if( a==b && a != c ) {
+			sumOfInts = c;
+		}else if ( b==c && b != a ) {
+			sumOfInts = a;
+		}else if( a==c && a != b ) {
+			sumOfInts = b;
+		}else if( a==c && a==b ) {
+			sumOfInts = 0;
+		}
+		else {
+			sumOfInts = (a + b + c);
+		}
+		return sumOfInts;
+		}
+		
+	
 	/*
 	 35. Given 3 int values, a b c, return their sum. However, if one of the values is 13 then it does not
 	 count towards the sum and values to its immediate right do not count. So for example, if b is 13, then both
@@ -602,7 +687,27 @@ public class Exercises {
 	 luckySum(13, 13, 3) → 0
 	 */
 	public int luckySum(int a, int b, int c) {
-		return 0;
+		int sum = 0;
+		if(a != 13 && b!= 13 && c !=13) {
+			sum = (a+b+c);
+		}
+		else if (a == 13) {
+			if(c!=13 && b != 13) {
+			sum = c;
+			}else {
+				sum = 0;
+			}return sum;
+		}
+		else if (b == 13) {
+			if(a==13) {
+			sum = 0;
+			}else{
+				sum = a;
+		}return sum;
+		}else {
+			sum = a+b;
+		}
+		return sum;
 	}
 
 }
