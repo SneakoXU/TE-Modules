@@ -67,9 +67,8 @@ public class Exercises {
 	public int diff21(int n) {
 		int result;
 		if(n>21) {
-			result = (21-n) *-2;
-		}result = (21-n);
-		
+			result = (21-n) *(-2);
+		}else{result = (21-n);}
 		return result;
 	}
 
@@ -112,13 +111,10 @@ public class Exercises {
 	 posNeg(-4, -5, true) → true
 	 */
 	public boolean posNeg(int a, int b, boolean negative) {
-		boolean result = true;
-		if() {
-			
-			
+		if(negative){
+			return(a<0 && b<0);
 		}
-		
-		return false;
+		return ( (a<0) ^ (b<0) );
 	}
 
 	/*
@@ -238,16 +234,17 @@ public class Exercises {
 	 */
 	public int max1020(int a, int b) {
 		int result;
-		if((a >= 10 && a <= 20) && (a>b)){
+		if((a >= 10 && a <= 20) && ((a>b) || (b<10 || b>20))){
 			result = a;
-		}else if ((b >= 10 && b <= 20) && (b>a)){
+		}else if ((b >= 10 && b <= 20) && ((b>a) || (a<10 || a>20))){
 			result = b;
-		//need to return a if b>a but out of range
 		}else {
 			result = 0;
 		}
 		return result;
 	}
+	
+
 
 	/*
 	 16. When squirrels get together for a party, they like to have cigars. A squirrel party is successful
@@ -259,9 +256,13 @@ public class Exercises {
 	 cigarParty(70, true) → true
 	 */
 	public boolean cigarParty(int cigars, boolean isWeekend) {
-		
-		
-		return false;
+		boolean result = false;
+		if(!isWeekend && (cigars >= 40 && cigars <= 60)) {
+			result = true;
+		}if (isWeekend && cigars >= 40) {
+			result = true;
+		}
+		return result;
 	}
 
 	/*
@@ -288,7 +289,16 @@ public class Exercises {
 	 squirrelPlay(95, true) → true
 	 */
 	public boolean squirrelPlay(int temp, boolean isSummer) {
-		return false;
+		boolean result = false;
+		if((temp >= 60 && temp <=90) && !isSummer) {
+			result = true;
+		}if(isSummer && (temp >= 60 && temp <=100)) {
+			result = true;
+		}if(!isSummer && (temp < 60 && temp >100)) {
+			result = false;
+		}if(isSummer && (temp < 60 && temp >90)) {
+			result = false;
+		}return result;
 	}
 
     /*
@@ -312,6 +322,7 @@ public class Exercises {
      yourCakeAndEatItToo(11.00, false) → "special"
      */
     public String yourCakeAndEatItToo(double mealAmount, boolean isBirthday) {
+    	
         return "";
     }
 
@@ -323,7 +334,14 @@ public class Exercises {
 	 sortaSum(10, 11) → 21
 	 */
 	public int sortaSum(int a, int b) {
-		return 0;
+		int result = 0;
+		int sumOfParams = a + b;
+		if(sumOfParams >= 10 && sumOfParams <= 19) {
+			result = 20;
+		}else {
+			result = sumOfParams;
+		}
+		return result;
 	}
 
 	/*
@@ -336,7 +354,23 @@ public class Exercises {
 	 alarmClock(0, false) → "10:00"
 	 */
 	public String alarmClock(int day, boolean vacation) {
-		return "";
+		String result = "";
+		if(day >= 1 && day <= 5) {
+			if(vacation) {
+				result = "10:00";
+			}else {
+				result = "7:00";
+			}
+			return result;
+		}if(day == 0 || day == 6){
+			if(vacation) {
+				result = "off";
+			}else {
+				result = "10:00";
+			}
+			return result;
+		}
+		return result;
 	}
 
 	/*
@@ -347,8 +381,22 @@ public class Exercises {
 	 in1To10(11, true) → true
 	 */
 	public boolean in1To10(int n, boolean outsideMode) {
-		return false;
-	}
+		boolean result = false;
+		if(outsideMode) {
+			if(n<=1 || n>=10) {
+				result = true;
+			}else {
+				result = false;
+			}
+			return result;
+		}if(!outsideMode) {
+				if(n>=1 && n<=10) {
+					result = true;
+				}else {result = false;}
+				return result;}
+		return result;
+			}
+			
 
 	/*
 	 23. We'll say a number is special if it is a multiple of 11 or if it is one more than a multiple of 11.
@@ -359,7 +407,13 @@ public class Exercises {
 	 specialEleven(24) → false
 	 */
 	public boolean specialEleven(int n) {
-		return false;
+		boolean result = false;
+		if(n%11 <= 1) {
+			result = true;
+		}else {
+			result = false;
+		}
+		return result;
 	}
 
 	/*
@@ -370,7 +424,13 @@ public class Exercises {
 	 more20(22) → true
 	 */
 	public boolean more20(int n) {
-		return false;
+		boolean result = false;
+		if(n>0 && (n%20==1 || n%20==2) ) {
+			result = true;
+		}else {
+			result = false;
+		}
+		return result;
 	}
 
 	/*
@@ -381,8 +441,14 @@ public class Exercises {
 	 old35(15) → false
 	 */
 	public boolean old35(int n) {
-		return false;
-	}
+		boolean result = false;
+		if(n>0 && (n%3==0 && n%5==0)) {
+				result = false;
+			}else if(n>0 && (n%3==0 || n%5==0)) {
+				result = true;
+			} else {result = false;}
+			return result;
+		}
 
 	/*
 	 26. Return true if the given non-negative number is 1 or 2 less than a multiple of 20. So for example 38
@@ -393,6 +459,7 @@ public class Exercises {
 	 less20(20) → false
 	 */
 	public boolean less20(int n) {
+		
 		return false;
 	}
 
