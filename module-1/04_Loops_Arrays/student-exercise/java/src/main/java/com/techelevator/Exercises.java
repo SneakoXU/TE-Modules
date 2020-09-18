@@ -10,8 +10,17 @@ public class Exercises {
 	 firstLast6([13, 6, 1, 2, 3]) → false
 	 */
 	public boolean firstLast6(int[] nums) {
-		return false;
-	}
+		boolean result = true;
+		for(int i=0;i<nums.length;i++) {
+				if(nums[0] == 6 || nums[nums.length-1] == 6) {
+					result = true;
+				}else {
+					result = false;
+				}
+			}
+		return result;
+		}
+
 
 	/*
 	 2. Given an array of ints, return true if the array is length 1 or more, and the first element and
@@ -21,7 +30,19 @@ public class Exercises {
 	 sameFirstLast([1, 2, 1]) → true
 	 */
 	public boolean sameFirstLast(int[] nums) {
-		return false;
+		boolean result = false;
+		for(int i=0; i<nums.length; i++) {
+			if(nums.length >= 1) {
+				if(nums[0] == nums[nums.length - 1]) {
+					result = true;
+				}else {
+					result = false;
+				}
+			}else {
+				result = false;
+			}
+		}
+		return result;
 	}
 
 	/*
@@ -29,18 +50,30 @@ public class Exercises {
 	 makePi() → [3, 1, 4]
 	 */
 	public int[] makePi() {
-		return new int[] {};
+		int[] digitsPi = { 3, 1, 4 };
+		
+		return digitsPi;
 	}
 
 	/*
 	 4. Given 2 arrays of ints, a and b, return true if they have the same first element or they have 
-	 the same last element. Both arrays will be length 1 or more.
+	 the same last elemePint. Both arrays will be length 1 or more.
 	 commonEnd([1, 2, 3], [7, 3]) → true
 	 commonEnd([1, 2, 3], [7, 3, 2]) → false
 	 commonEnd([1, 2, 3], [1, 3]) → true
 	 */
 	public boolean commonEnd(int[] a, int[] b) {
-		return false;
+		boolean result = false;
+		for(int i = 0; i<a.length; i++) {
+			for(int n = 0; n<b.length; n++) {
+				if(a[0] == b[0] || a[a.length - 1] == b[b.length - 1]) {
+					result = true;
+				}else {
+					result = false;
+				}
+			}
+		}
+		return result;
 	}
 
 	/*
@@ -50,7 +83,11 @@ public class Exercises {
 	 sum3([7, 0, 0]) → 7
 	 */
 	public int sum3(int[] nums) {
-		return 0;
+		int sumOfInts = 0;
+		for(int i=0; i<=2; i++) {
+			sumOfInts = sumOfInts + nums[i];
+		}
+		return sumOfInts;
 	}
 
 	/*
@@ -61,7 +98,33 @@ public class Exercises {
 	 rotateLeft3([7, 0, 0]) → [0, 0, 7]
 	 */
 	public int[] rotateLeft3(int[] nums) {
-		return new int[] {};
+//		int[] numsRotated = new int[3];
+//		for(int i=0; i<=2; i++) {
+//			int firstNum = nums[0];	
+//			
+//			for(int n=1; n>=0; n--) {
+//			numsRotated[n] = nums[i];
+//			return numsRotated;
+//			
+//			}numsRotated[2] = firstNum;
+//		}
+//		int[] numsRotated = new int[3];
+//		int first = nums[0];
+//		int count = 1;
+//		for(int i=1; i<=2; i++) {
+//			numsRotated[count] = nums[i];
+//			count--;
+//			numsRotated[2] = first; 
+//		}
+//		return numsRotated;
+//	}
+		
+		int[] numsRotated = new int[3];
+		
+		numsRotated[0] = nums[1];
+		numsRotated[1] = nums[2];
+		numsRotated[2] = nums[0];
+		return numsRotated;
 	}
 
 	/*
@@ -72,7 +135,16 @@ public class Exercises {
 	 reverse3([7, 0, 0]) → [0, 0, 7]
 	 */
 	public int[] reverse3(int[] nums) {
-		return new int[] {};
+		int[] reversedNums = new int[3];
+		int count = 2;
+		for(int i=0; i<=2; i++) {
+			
+				reversedNums[count] = nums[i];
+				count--;
+	
+		}
+		
+		return reversedNums;
 	}
 
 	/*
@@ -83,6 +155,8 @@ public class Exercises {
 	 maxEnd3([2, 11, 3]) → [3, 3, 3]
 	 */
 	public int[] maxEnd3(int[] nums) {
+		
+		
 		return new int[] {};
 	}
 
