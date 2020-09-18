@@ -155,10 +155,22 @@ public class Exercises {
 	 maxEnd3([2, 11, 3]) → [3, 3, 3]
 	 */
 	public int[] maxEnd3(int[] nums) {
-		
-		
-		return new int[] {};
-	}
+		int[] changedArr = new int[3];
+		for(int i = 0; i<nums.length; i++) {
+			
+				if( nums[0] > nums[nums.length-1] ) {
+					changedArr[0] = nums[0];
+					changedArr[1] = nums[0];
+					changedArr[2] = nums[0];
+				}if( nums[0] < nums[nums.length-1] ) {
+					changedArr[0] = nums[nums.length-1];
+					changedArr[1] = nums[nums.length-1];
+					changedArr[2] = nums[nums.length-1];
+				}
+				}
+		return changedArr;
+		}
+	
 
 	/*
 	 9. Given an array of ints, return the sum of the first 2 elements in the array. If the array length
@@ -168,7 +180,15 @@ public class Exercises {
 	 sum2([1, 1, 1, 1]) → 2
 	 */
 	public int sum2(int[] nums) {
-		return 0;
+		int sumOfArray = 0;
+		for(int i = 0; i < nums.length; i++) {
+			if(nums.length >= 2) {
+				sumOfArray = nums[0] + nums[1];
+			}if(nums.length < 2) {
+				sumOfArray = nums[0];
+			}
+		}
+		return sumOfArray;
 	}
 
 	/*
@@ -179,7 +199,16 @@ public class Exercises {
 	 middleWay([5, 2, 9], [1, 4, 5]) → [2, 4]
 	 */
 	public int[] middleWay(int[] a, int[] b) {
-		return new int[] {};
+		int[] midArray = new int[2];
+		for(int i = 0; i<a.length; i++) {
+			for(int n = 0; n<b.length; n++) {
+				midArray[0] = a[1];
+				midArray[1] = b[1];
+			}
+		}
+		
+	
+		return midArray;
 	}
 
 	/*
@@ -190,7 +219,16 @@ public class Exercises {
 	 countEvens([1, 3, 5]) → 0
 	 */
 	public int countEvens(int[] nums) {
-		return 0;
+		int evenInts = 0;
+		
+		for(int i=0; i < nums.length; i+=2) {
+			if( (nums[i]%2==0) ) {
+				evenInts++;
+			}if(nums[i] == 0) {
+				evenInts++;
+			}
+		}
+		return evenInts;
 	}
 
 	/*
@@ -204,7 +242,25 @@ public class Exercises {
 	 sum13([1, 2, 2, 1, 13, 3, 4]) → 10
 	 */
 	public int sum13(int[] nums) {
-		return 0;
+//		int sumOfArray = 0;
+//		for(int i=0; i<nums.length; i++) {
+//			//sum of nums in array
+//			if(nums[i] != 13) {
+//				
+//				sumOfArray += nums[i];
+//				
+//			}if(nums[i] == 13) {
+//				sumOfArray = (sumOfArray /*+ nums[i]) - 13*/);
+//			}if(nums[(i-1)] == 13)
+//			{
+//				sumOfArray = (sumOfArray /*+ nums[i] - nums[i]*/);
+//			}
+//			
+//			else {
+//				sumOfArray = 0;
+//			}
+//			} 
+//			return sumOfArray;
 	}
 
 	/*
@@ -214,7 +270,14 @@ public class Exercises {
 	 has22([2, 1, 2]) → false
 	 */
 	public boolean has22(int[] nums) {
-		return false;
+		boolean result = false;
+		for(int i=0; i<nums.length; i++) {
+			if(nums[i] == 2 && nums[i-1] == 2) {
+				result = true;
+			}
+		}
+	
+		return result;
 	}
 	
 	/*
