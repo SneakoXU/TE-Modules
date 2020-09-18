@@ -287,7 +287,19 @@ public class Exercises {
 	 lucky13([1, 2, 4]) → false
 	 */
 	public boolean lucky13(int[] nums) {
-		return false;
+		boolean result = true;
+		for(int i=0; i<nums.length; i++) {
+			if( (nums[i] == 1) ) {
+				result = false;
+				return result;
+			}if( (nums[i] == 3) ) {
+				result = false;
+				return result;
+			}else {
+				result = true;
+			}
+		}
+		return result;
 	}
 
 	/*
@@ -297,7 +309,12 @@ public class Exercises {
 	 sum28([1, 2, 3, 4]) → false
 	 */
 	public boolean sum28(int[] nums) {
+		boolean result = false;
+		int sumOfTwos = 0; //use this to store the sum of twos while looping through the array and checking if the elements are 2 or not.
+		for(int i=0; i<nums.length; i++) {
+			
+		}
 		return false;
-	}
+	}//objects have values and behaviors
 
 }
