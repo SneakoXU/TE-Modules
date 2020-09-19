@@ -310,11 +310,18 @@ public class Exercises {
 	 */
 	public boolean sum28(int[] nums) {
 		boolean result = false;
-		int sumOfTwos = 0; //use this to store the sum of twos while looping through the array and checking if the elements are 2 or not.
+		int sumOfTwos = 0;
 		for(int i=0; i<nums.length; i++) {
-			
+			if(nums[i] == 2) {
+				sumOfTwos += nums[i];
+				if(sumOfTwos == 8) {
+					result = true;
+				}else {
+					result = false;
+				}
+			}
 		}
-		return false;
-	}//objects have values and behaviors
+		return result;
+	}
 
 }
