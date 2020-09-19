@@ -98,29 +98,8 @@ public class Exercises {
 	 rotateLeft3([7, 0, 0]) → [0, 0, 7]
 	 */
 	public int[] rotateLeft3(int[] nums) {
-//		int[] numsRotated = new int[3];
-//		for(int i=0; i<=2; i++) {
-//			int firstNum = nums[0];	
-//			
-//			for(int n=1; n>=0; n--) {
-//			numsRotated[n] = nums[i];
-//			return numsRotated;
-//			
-//			}numsRotated[2] = firstNum;
-//		}
-//		int[] numsRotated = new int[3];
-//		int first = nums[0];
-//		int count = 1;
-//		for(int i=1; i<=2; i++) {
-//			numsRotated[count] = nums[i];
-//			count--;
-//			numsRotated[2] = first; 
-//		}
-//		return numsRotated;
-//	}
 		
 		int[] numsRotated = new int[3];
-		//int firstNum = 0;
 		int count = 0;
 		for(int i=0; i<=2; i++) {
 			if(i==0) {
@@ -252,25 +231,18 @@ public class Exercises {
 	 sum13([1, 2, 2, 1, 13, 3, 4]) → 10
 	 */
 	public int sum13(int[] nums) {
-//		int sumOfArray = 0;
-//		for(int i=0; i<nums.length; i++) {
-//			//sum of nums in array
-//			if(nums[i] != 13) {
-//				
-//				sumOfArray += nums[i];
-//				
-//			}if(nums[i] == 13) {
-//				sumOfArray = (sumOfArray /*+ nums[i]) - 13*/);
-//			}if(nums[(i-1)] == 13)
-//			{
-//				sumOfArray = (sumOfArray /*+ nums[i] - nums[i]*/);
-//			}
-//			
-//			else {
-//				sumOfArray = 0;
-//			}
-//			} 
-//			return sumOfArray;
+		
+		int sumOfArray = 0;
+		for(int i=0; i<nums.length; i++) {
+			//sum of nums in array
+			if(nums[i] != 13) {
+				sumOfArray += nums[i];
+			}if(nums[i] == 13 && i<nums.length-1) {
+				nums[i] = 0;
+				nums[i+1]=0;
+			}
+			} 
+			return sumOfArray;
 	}
 
 	/*
@@ -282,13 +254,16 @@ public class Exercises {
 	public boolean has22(int[] nums) {
 		boolean result = false;
 		for(int i=0; i<nums.length; i++) {
-			if(nums[i] == 2 && nums[i-1] == 2) {
+			if(nums[i] == 2 && i > 0 && nums[i-1] == 2) {
 				result = true;
-			}
+				}
+			if(nums[i] == 2 && i == 0 && nums[i+1] == 2) {
+				result = true;
+			}	
+			}return result;
 		}
 	
-		return result;
-	}
+	
 	
 	/*
 	 14. Given an array of ints, return true if the array contains no 1's and no 3's.
