@@ -120,11 +120,21 @@ public class Exercises {
 //	}
 		
 		int[] numsRotated = new int[3];
+		//int firstNum = 0;
+		int count = 0;
+		for(int i=0; i<=2; i++) {
+			if(i==0) {
+				numsRotated[2] = nums[i]; 
+			}else {
+				numsRotated[count] = nums[i];
+				count++;
+			}
+		}return numsRotated;
 		
-		numsRotated[0] = nums[1];
-		numsRotated[1] = nums[2];
-		numsRotated[2] = nums[0];
-		return numsRotated;
+//		numsRotated[0] = nums[1];
+//		numsRotated[1] = nums[2];
+//		numsRotated[2] = nums[0];
+//		return numsRotated;
 	}
 
 	/*
