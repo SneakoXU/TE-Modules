@@ -10,17 +10,17 @@ public class Fibonacci {
 		String fibString = in.nextLine();
 		Integer fibInt = Integer.parseInt(fibString);
 		
-		//boolean running = true;
+		boolean running = true;
 		int firstFib = 0;
 		int secondFib = 1;
 		
-		//while(running) {
+		while(running) {
 		//if(fibInt > 1) {
 		while(firstFib <= fibInt) {
-			
-			
-			
-			
+			System.out.print(firstFib + " ");
+			int sum = firstFib + secondFib;
+			firstFib = secondFib;
+			secondFib = sum;
 			}
 			
 			
