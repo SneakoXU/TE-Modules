@@ -16,16 +16,11 @@ public class DecimalToBinary {
 		
 		//convert string[] to int[] in order to calculate
 		int[] intUserArray = changeToIntArray(userArray);
-		
-		
-		
-		
+			
 //		int[]intUserArray = new int[userArray.length]; 
 //  		for(int i = 0; i < userArray.length; i++) {
 //  			intUserArray[i] = Integer.parseInt(userArray[i]);	  
-//  		}
-		
-  		
+//  		}	
  		binaryConvert(intUserArray);
 //  		binaryConvert(changeToIntArray(userArray));
 
@@ -63,32 +58,8 @@ public class DecimalToBinary {
 		public static void binaryConvert(int[] passedInArray) {
 			for(int n=0; n<passedInArray.length; n++) {
 			System.out.println(passedInArray[n] + " in binary is " + Integer.toBinaryString(passedInArray[n]));
-			
-			
-//			int[] newArray = new int[passedInArray.length];
-//			int counter = 0;
-//			
-//			for(int m=0; m<passedInArray.length; m++) {
-//				int binaryValue = passedInArray[m];
-//				newArray[counter] = binaryValue % 2;
-//				binaryValue = binaryValue / 2;
-//				counter++;
-//			}
-//			
-//			
-//			for(int a = 0; a < newArray.length; a++) {
-//	  		System.out.println(newArray[a]);	
-//				
 				
-				
-			}
-			
-		// int[] binaryNumber = new int[intBinaryArray.length]
-		// int counter = 0;	
-		// int binaryValue = 0;
-		// binaryNumber[i] = binaryValue % 2;
-		// binaryValue = binaryValue / 2;	
-		// counter++;	
+
 			
 			
 		}
