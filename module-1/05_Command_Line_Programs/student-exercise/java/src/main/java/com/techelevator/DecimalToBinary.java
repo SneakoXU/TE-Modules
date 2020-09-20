@@ -57,11 +57,9 @@ public class DecimalToBinary {
 		//pass in array, calc binary and store it in array
 		public static void binaryConvert(int[] passedInArray) {
 			for(int n=0; n<passedInArray.length; n++) {
-			System.out.println(passedInArray[n] + " in binary is " + Integer.toBinaryString(passedInArray[n]));
-				
-
-			
-			
-		}
+				System.out.println(passedInArray[n] + " in binary is " + Integer.toBinaryString(passedInArray[n]));
+		
+			}
 	
+		}
 }
