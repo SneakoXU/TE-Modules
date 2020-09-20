@@ -219,7 +219,8 @@ public class Exercises {
         */
 		
 		double costOfIceCreamCone = .99;
-		double costOfTwoCones = 2 * costOfIceCreamCone;
+		double numOfCones = 0;
+		double costOfTwoCones = numOfCones * costOfIceCreamCone;
 		System.out.println(costOfTwoCones);
 
         /*
@@ -303,7 +304,7 @@ public class Exercises {
 
 		double totalKateMoney = 1.00;
 		double costOfCandy = .54;
-		double totalChange = totalMoney - costOfCandy;
+		double totalChange = totalKateMoney - costOfCandy;
 		System.out.println(totalChange);
 		
 		
@@ -420,7 +421,7 @@ public class Exercises {
 		
 		int madeCookies = 47;
 		int cookiesPerJar = 6;
-		int cookiesNotInJar = 47%6;
+		int cookiesNotInJar = madeCookies%cookiesPerJar;
 		System.out.println(cookiesNotInJar);
 
         /*
@@ -476,7 +477,7 @@ public class Exercises {
 		
 		int totalCarrots = 74;
 		int numberOfPeople = 12;
-		int carrotsUneaten = 74%12;
+		int carrotsUneaten = totalCarrots%numberOfPeople;
 		
 
         /*
