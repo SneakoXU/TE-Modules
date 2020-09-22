@@ -534,16 +534,16 @@ public class Exercises {
 	public String stringYak(String str) {
 		String nonYakString = "";
 		
-		for(int i=0; i<str.length(); i++) {
+	for(int i=0; i<str.length(); i++) {
 			
-	while(i<str.length()-3) {
+		while(i<str.length()-3) {
 		if( !(i > 0 && i < (str.length()-1) && (str.substring(i, i+3).equals("yak")) )) {
 			String nonYakChars = str.substring(i, i+3);
 			nonYakString = nonYakString + nonYakChars;
 		
-	}
-	}
+			}
 		}
+	}
 		return nonYakString;
-		}
+	}
 }
