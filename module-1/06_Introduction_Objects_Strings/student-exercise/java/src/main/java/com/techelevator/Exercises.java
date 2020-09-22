@@ -107,8 +107,11 @@ public class Exercises {
 	 withoutEnd("coding") → "odin"
 	 */
 	public String withoutEnd(String str) {
+		int myStringLength = str.length();
+		String noEnds = str.substring(1, myStringLength -1);
 		
-		return null;
+		
+		return noEnds;
 	}
 
 	/*
@@ -205,7 +208,7 @@ public class Exercises {
 		String stringWithNoEnds = "";
 		
 		if(myStringLength > 1) {
-			stringWithNoEnds = str.substring(1, str.length() - 1);
+			stringWithNoEnds = str.substring(1, myStringLength - 1);
 			
 		}else {
 			stringWithNoEnds = "";
@@ -258,8 +261,11 @@ public class Exercises {
 	 nTwice("Chocolate", 1) → "Ce"
 	 */
 	public String nTwice(String str, int n) {
+		int myStringLength = str.length();
+		String firstChars = str.substring(0, n);
+		String lastChars = str.substring(myStringLength - n);
 		
-		return null;
+		return firstChars + lastChars;
 	}
 
 	/*
@@ -271,7 +277,16 @@ public class Exercises {
 	 twoChar("java", 3) → "ja"
 	 */
 	public String twoChar(String str, int index) {
-		return null;
+		int myStringLength = str.length();
+		String twoCharString = "";
+		
+		if(myStringLength <= index + 1 || index < 0) {
+			twoCharString = str.substring(0, 2);
+		}
+		else {
+			twoCharString = str.substring(index, index + 2);
+		}
+		return twoCharString;
 	}
 
 	/*
@@ -389,10 +404,26 @@ public class Exercises {
 	 doubleX("axaxax") → false
 	 doubleX("xxxxx") → true
 	 */
-	public boolean doubleX(String str) {
+	public boolean doubleX(String str) {	
+		boolean result = false;
 		
-		return false;
-	}
+		for(int i=0; i < str.length() -1; i++) {
+			if(str.charAt(i) == 'x') {
+			
+				if(str.charAt(i+1) == 'x') {
+					result = true;
+					break;
+					
+			}
+				else {
+					result = false;
+					break;
+				}
+			}
+		}
+		return result;
+		}
+
 
 	/*
 	 Given a string, return a new string made of every other char starting with the first, so "Hello" yields "Hlo".
@@ -401,7 +432,13 @@ public class Exercises {
 	 stringBits("Heeololeo") → "Hello"
 	 */
 	public String stringBits(String str) {
-		return null;
+		String iterator = "";
+		String everyOther = "";
+		for(int i = 0; i<str.length(); i += 2) {
+			iterator = str.substring(i, i+1);
+			everyOther = everyOther + iterator;
+		}
+		return everyOther;
 	}
 
 	/*
@@ -411,7 +448,15 @@ public class Exercises {
 	 stringSplosion("ab") → "aab"
 	 */
 	public String stringSplosion(String str) {
-		return null;
+		int myStringLength = str.length();
+		String iterator = "";
+		String splosiveString = "";
+		for(int i = 0; i < myStringLength; i++) {
+			iterator = str.substring(0, i+1);
+			splosiveString = splosiveString + iterator;
+		}
+		
+		return splosiveString;
 	}
 
 	/*
@@ -422,7 +467,19 @@ public class Exercises {
 	 last2("axxxaaxx") → 2
 	 */
 	public int last2(String str) {
-		return 0;
+		int myStringLength = str.length();
+		int count = 0;
+		
+		
+		if(myStringLength >= 2) {
+			String trimmedString = str.substring(myStringLength-2);
+		for(int i = 0; i<myStringLength-2; i++) {
+			if( str.substring(i, i+2).equals(trimmedString) ){
+				count++;
+			}
+		}
+		}
+		return count;
 	}
 
 	/*
@@ -433,7 +490,17 @@ public class Exercises {
 	 stringX("xabxxxcdx") → "xabcdx"
 	 */
 	public String stringX(String str) {
-		return null;
+		String nonXString = "";
+		for(int i=0; i<str.length(); i++) {
+			if( !(i > 0 && i < (str.length()-1) && (str.substring(i, i+1).equals("x")) )) {
+				String nonXChars = str.substring(i, i+1);
+				nonXString = nonXString + nonXChars;
+				
+			}
+			
+		}
+		
+		return nonXString;
 	}
 
 	/*
@@ -443,7 +510,18 @@ public class Exercises {
 	 altPairs("CodingHorror") → "Congrr"
 	 */
 	public String altPairs(String str) {
-		return null;
+		String pairs = "";
+		String subs = "";
+		for(int i =0; i<str.length(); i+=4) {
+			if(i<str.length()-1) {
+				subs = str.substring(i, i+2);
+				pairs = pairs + subs;
+			}if(i==str.length()-1) {
+				subs = str.substring(str.length()-1);
+				pairs = pairs + subs;
+			}
+		}
+		return pairs;
 	}
 
 	/*
@@ -454,7 +532,18 @@ public class Exercises {
 	 stringYak("yak123ya") → "123ya"
 	 */
 	public String stringYak(String str) {
-		return null;
+		String nonYakString = "";
+		
+		for(int i=0; i<str.length(); i++) {
+			
+	while(i<str.length()-3) {
+		if( !(i > 0 && i < (str.length()-1) && (str.substring(i, i+3).equals("yak")) )) {
+			String nonYakChars = str.substring(i, i+3);
+			nonYakString = nonYakString + nonYakChars;
+		
 	}
-
+	}
+		}
+		return nonYakString;
+		}
 }

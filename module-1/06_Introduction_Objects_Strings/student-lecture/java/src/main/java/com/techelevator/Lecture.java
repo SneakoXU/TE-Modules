@@ -66,6 +66,8 @@ public class Lecture {
 		String secondHalf = myString.substring(5);
 		System.out.println(firstHalf);
 		System.out.println(secondHalf);
+		myString.replace("H", "");
+		System.out.println(myString + "GONE!!!!!!!!");
 		
 		
 		//What if I wanted the last 3 of any string?
