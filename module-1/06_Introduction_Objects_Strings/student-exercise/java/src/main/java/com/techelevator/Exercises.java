@@ -326,8 +326,10 @@ public class Exercises {
 	public String stringTimes(String str, int n) {
 		
 		String timedString = "";
+		if(n>0) {
 		for (int i=0; i<n; i++) {
 		timedString = timedString + str;
+			}
 		}
 		return timedString;
 		}
@@ -341,7 +343,24 @@ public class Exercises {
 	 frontTimes("Abc", 3) → "AbcAbcAbc"
 	 */
 	public String frontTimes(String str, int n) {
-		return null;
+		int myStringLength = str.length();
+		String frontThreeTimes ="";
+		
+		if(n>0) {
+		if(myStringLength>3) {
+			String frontThree = str.substring(0, 3); 
+			
+			for(int i=0; i<n;i++) {
+				frontThreeTimes = frontThreeTimes + frontThree; 
+			}
+			
+		}if(myStringLength<=3) {
+			for(int i=0; i<n;i++) {
+			frontThreeTimes = frontThreeTimes + str; 
+			}
+		}
+		}
+		return frontThreeTimes;
 	}
 
 	/*
@@ -351,8 +370,18 @@ public class Exercises {
 	 countXX("xxxx") →
 	 */
 	public int countXX(String str) {
-		return 0;
-	}
+		
+		int count = 0;
+		
+		for(int i=0; i < str.length() -1; i++) {
+			if(str.substring(i,  i+2).contentEquals("xx")) {
+				count++;
+			}
+		}
+		return count;
+		}
+		
+	
 
 	/*
 	 Given a string, return true if the first instance of "x" in the string is immediately followed by another "x".
@@ -361,6 +390,7 @@ public class Exercises {
 	 doubleX("xxxxx") → true
 	 */
 	public boolean doubleX(String str) {
+		
 		return false;
 	}
 
