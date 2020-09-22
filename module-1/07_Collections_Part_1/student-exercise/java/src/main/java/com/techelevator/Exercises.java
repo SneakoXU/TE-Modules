@@ -109,7 +109,22 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
+//		List<Integer> listElements = new ArrayList<Integer>();
+//		Integer oddInts = 0;
+//		
+//		
+//		for(int i=0; i<integerArray.length; i++) {
+//			if(integerArray[i]%2 > 0) {
+//				
+//				oddInts = integerArray[i];
+//				listElements = oddInts;
+//				}		
+//			}
+//		for (Integer elements : oddArray) {
+//			
+//			listElements.add(elements);
+//		}
+//		return listElements;
 	}
 
 	/*
@@ -120,8 +135,20 @@ public class Exercises {
 	 foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
-		return false;
+		boolean result = false;
+		int counter = 0;
+		for(Integer listItems : integerList) {
+			if(listItems.equals(intToFind) ) {
+				counter++;
+				if(counter >= 2) {
+					result = true;
+				}
+			}
+		}
+		return result;
 	}
+		
+	
 
 	/*
 	 Given an array of Integers, return a List that contains the same Integers (as Strings). Except any multiple of 3
@@ -137,6 +164,7 @@ public class Exercises {
 	 equals "1")
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
+		
 		return null;
 	}
 
