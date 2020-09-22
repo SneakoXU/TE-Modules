@@ -67,6 +67,7 @@ public class Lecture {
 		System.out.println(firstHalf);
 		System.out.println(secondHalf);
 		
+		
 		//What if I wanted the last 3 of any string?
 		String lastThree = myString.substring(myString.length()-3);
 		System.out.println(lastThree);
