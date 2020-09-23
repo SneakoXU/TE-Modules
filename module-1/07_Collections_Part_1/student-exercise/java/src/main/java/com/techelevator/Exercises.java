@@ -54,12 +54,17 @@ public class Exercises {
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
 		List<String> listElements = new ArrayList<String>();
-		String elementsInArray = "";
-		for(int i = 0; i<stringArray.length; i++ ) {
-			elementsInArray = stringArray[i];
+//		String elementsInArray = "";
+//		for(int i = 0; i<stringArray.length; i++ ) {
+//			elementsInArray = stringArray[i];
+//			if(elementsInArray.length() > 4 || elementsInArray.length() < 4) {
+//				listElements.add(stringArray[i]);
+//			}
+		
+		for(String elementsInArray : stringArray) {
 			if(elementsInArray.length() > 4 || elementsInArray.length() < 4) {
-				listElements.add(stringArray[i]);
-			}
+				listElements.add(elementsInArray);
+		}
 		}
 		
 		return listElements;
@@ -109,22 +114,27 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-//		List<Integer> listElements = new ArrayList<Integer>();
-//		Integer oddInts = 0;
+		List<Integer> listElements = new ArrayList<Integer>();
+		//Integer oddInts = 0;
+		//Integer[] oddArray = new Integer[integerArray.length]; -- NOT RIGHT 
 //		
-//		
-//		for(int i=0; i<integerArray.length; i++) {
-//			if(integerArray[i]%2 > 0) {
-//				
-//				oddInts = integerArray[i];
-//				listElements = oddInts;
-//				}		
-//			}
+		for(Integer elements: integerArray) {
+		//for(int i=0; i<integerArray.length; i++) {
+			////if(integerArray[i]%2 > 0) {
+				
+				//oddArray[i] = integerArray[i];
+				//oddArray[i] = oddInts;
+				////listElements.add(integerArray[i]);
+			if(elements % 2 > 0) {
+				listElements.add(elements);
+			}
+				}		
+			
 //		for (Integer elements : oddArray) {
 //			
 //			listElements.add(elements);
-//		}
-//		return listElements;
+		//}
+		return listElements;
 	}
 
 	/*
@@ -167,8 +177,14 @@ public class Exercises {
 		List<String> fizzBuzz = new ArrayList<String>();
 		int arrayLength = integerArray.length;
 		String[] stringArray = new String[integerArray.length];
-		String stringOfIntArray = "";
+		//String stringOfIntArray = "";
 		//int count = 0;
+		
+		
+		//for(Integer fizzBuzzInt : integerArray
+		//String[] stringArray = new String[integerArray.length];
+		//stringArray[i] = integerArray[i].toString();
+		
 		
 		for(int i = 0; i<arrayLength; i++) {
 			stringArray[i] = integerArray[i].toString();
