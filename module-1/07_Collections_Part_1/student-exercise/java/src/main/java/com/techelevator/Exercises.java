@@ -185,7 +185,6 @@ public class Exercises {
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
 		List<Integer> interList = new ArrayList<Integer>();
 
-		
 		if(listOne.size() > listTwo.size()) {
 			for(int i =0; i < listTwo.size(); i++) {
 				interList.add(listOne.get(i));
