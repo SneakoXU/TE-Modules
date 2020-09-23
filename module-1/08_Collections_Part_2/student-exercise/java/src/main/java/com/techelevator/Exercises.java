@@ -34,6 +34,8 @@ public class Exercises {
 	 *
 	 */
 	public String animalGroupName(String animalName) {
+		
+		
 		return null;
 	}
 
