@@ -168,25 +168,29 @@ public class Exercises {
 		int arrayLength = integerArray.length;
 		String[] stringArray = new String[integerArray.length];
 		String stringOfIntArray = "";
-		int count = 0;
+		//int count = 0;
 		
-//		for(int i = 0; i<arrayLength; i++) {
-//			if(integerArray[i] % 3 == 0) {
+		for(int i = 0; i<arrayLength; i++) {
+			stringArray[i] = integerArray[i].toString();
+			if(integerArray[i] % 3 == 0) {
+				//stringOfIntArray = integerArray[i].toString();
+				//stringArray[i] = stringOfIntArray;
+				stringArray[i] = integerArray[i].toString();
+				stringArray[i] = "Fizz";
+			}if(integerArray[i] % 5 == 0) {
 //				stringOfIntArray = integerArray[i].toString();
 //				stringArray[i] = stringOfIntArray;
-//				stringArray[i] = "Fizz";
-//			}if(integerArray[i] % 5 == 0) {
+				stringArray[i] = integerArray[i].toString();
+				stringArray[i] = "Buzz";
+			}if( (integerArray[i] % 15 == 0) ) {
 //				stringOfIntArray = integerArray[i].toString();
 //				stringArray[i] = stringOfIntArray;
-//				stringArray[i] = "Buzz";
-//			}if( (integerArray[i] % 5 == 0) && (integerArray[i] % 3 == 0) ) {
-//				stringOfIntArray = integerArray[i].toString();
-//				stringArray[i] = stringOfIntArray;
-//				stringArray[i] = "FizzBuzz";
-//			}else {
-//				stringArray[i] = integerArray[i].toString();
-//			}
-//		}
+				stringArray[i] = integerArray[i].toString();
+				stringArray[i] = "FizzBuzz";
+			}//else {
+				//stringArray[i] = integerArray[i].toString();
+			
+		}
 		
 //		for(Integer i : integerArray) {
 //			
