@@ -191,72 +191,12 @@ public class Exercises {
 				//stringArray[i] = integerArray[i].toString();
 			
 		}
-		
-//		for(Integer i : integerArray) {
-//			
-//			if(i%3 == 0 && count <= integerArray.length) {
-//				//stringOfIntArray = i.toString();
-//				stringArray[count] = "Fizz";
-//				count++;
-//			}if(i%5 == 0 && count<=integerArray.length) {
-//				//stringOfIntArray = i.toString();
-//				stringArray[count] = "Buzz";
-//				count++;
-//			}if(i%5 == 0 && i%3 == 0 && count <= integerArray.length) {
-//				//stringOfIntArray = i.toString();
-//				stringArray[count] = "FizzBuzz";
-//				count++;
-//			}if (count<=integerArray.length && (i%3 != 0) && (i%5 != 0)) {
-//				stringArray[count] = i.toString();
-//				count++;
-//			}
-//		}
-		
-		
-//		for(int i = 0; i<arrayLength; i++) {
-//			stringArray[i] = integerArray[i].toString();
-//			for(int s = 0; s<stringArray.length; s++) {
-//					//stringOfIntArray = stringOfIntArray + stringArray[i];
-//				if((stringArray[s])%3 == 0 ){
-//					stringArray[s] = "Fizz";
-//				}if( (s+1)%5 == 0 ) {
-//					stringArray[s] = "Buzz";
-//				}if( (s+1)%5 == 0 && (s+1)%3 == 0 ) {
-//					stringArray[s] = "FizzBuzz";
-//				}
-//				
-//			}
-//		}
+
 		for(String elements : stringArray) {
 			fizzBuzz.add(elements);
 		}
-		
-		
-		
-		
-//		for(int i = 0; i<arrayLength; i++) {
-//			stringArray[i] = integerArray[i].toString();
-//			if((i+1)%3 == 0) {
-//				stringArray[i] = "Fizz";
-//			}if((i+1)%5 == 0) {
-//				stringArray[i] = "Buzz";
-//			}if( (i+1)%3 == 0 && (i+1)%5 == 0 ) {
-//				stringArray[i] = "FizzBuzz";
-//			} 
-//		}
-//		
-//		for (String elements : stringArray) {
-//			fizzBuzz.add(elements);
-////			if( fizzBuzz.indexOf(fizzBuzz)%3 == 0 ) {
-////				
-////				fizzBuzz.replaceAll("fizz");
-//		return fizzBuzz;	
-//		}
-//			
-		
-		
+			
 		return fizzBuzz;
-		
 	}
 
 	/*
