@@ -536,7 +536,7 @@ public class Exercises {
 		
 	for(int i=0; i<str.length(); i++) {
 			
-		while(i<str.length()-3) {
+		if(i<str.length()-3) {
 		if( !(i > 0 && i < (str.length()-1) && (str.substring(i, i+3).equals("yak")) )) {
 			String nonYakChars = str.substring(i, i+3);
 			nonYakString = nonYakString + nonYakChars;
