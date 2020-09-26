@@ -17,36 +17,29 @@ public class Airplane {
 		this.totalCoachSeats = totalCoachSeats;
 	}
 
-
 	public String getPlaneNumber() {
 		return this.planeNumber;
 	}
-
 
 	public int getTotalFirstClassSeats() {
 		return this.totalFirstClassSeats;
 	}
 
-
 	public int getBookedFirstClassSeats() {
 		return this.bookedFirstClassSeats;
 	}
-
 
 	public int getAvailableFirstClassSeats() {
 		return totalFirstClassSeats - bookedFirstClassSeats;
 	}
 
-
 	public int getTotalCoachSeats() {
 		return this.totalCoachSeats;
 	}
 
-
 	public int getBookedCoachSeats() {
 		return this.bookedCoachSeats;
 	}
-
 
 	public int getAvailableCoachSeats() {
 		return totalCoachSeats - bookedCoachSeats;
@@ -74,7 +67,6 @@ public class Airplane {
 				result = true;
 			}
 		} 
-		
 		return result;
 	}
 	

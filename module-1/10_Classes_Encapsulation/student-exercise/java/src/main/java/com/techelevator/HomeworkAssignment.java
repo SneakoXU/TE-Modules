@@ -47,9 +47,6 @@ public class HomeworkAssignment {
 		}
 		return letterGrade;
 	}
-	
-//	public void setLetterGrade(String letterGrade) {
-//		this.letterGrade = letterGrade;
-//	}
+
 
 }

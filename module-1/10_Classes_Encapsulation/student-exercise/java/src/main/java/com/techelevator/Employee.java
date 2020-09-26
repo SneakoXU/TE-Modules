@@ -40,8 +40,7 @@ public class Employee {
 		return this.annualSalary;
 	}
 	public void raiseSalary(double percent) {
-		double decimal = percent/100;
-		annualSalary = annualSalary * (1 + decimal);
+		annualSalary = annualSalary * (1 + percent/100);
 	}
 	
 	

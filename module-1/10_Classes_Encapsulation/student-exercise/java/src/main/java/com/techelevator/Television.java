@@ -31,10 +31,7 @@ public class Television {
 			if(newChannel >= 3 && newChannel <= 18) {
 				currentChannel = newChannel;
 			}
-			
-			
 		}
-			
 	}
 	
 	public void channelUp() {
@@ -44,8 +41,6 @@ public class Television {
 				currentChannel = 3;
 			}
 		}
-		
-		
 	}
 	
 	public void channelDown() {
@@ -55,7 +50,6 @@ public class Television {
 				currentChannel = 18;
 			}
 		}
-		
 	}
 	
 	public void raiseVolume() {
@@ -64,7 +58,6 @@ public class Television {
 				currentVolume += 1;
 			}
 		}
-		
 	}
 
 	public void lowerVolume() {
