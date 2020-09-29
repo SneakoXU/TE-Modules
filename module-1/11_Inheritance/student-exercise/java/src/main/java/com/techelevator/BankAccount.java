@@ -35,6 +35,7 @@ public class BankAccount {
 		return balance;
 	}
 	
+	
 	//Public methods
 	public int deposit(int amountToDeposit) {
 		balance = getBalance() + amountToDeposit;
