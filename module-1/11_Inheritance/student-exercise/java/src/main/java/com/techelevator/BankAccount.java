@@ -7,7 +7,7 @@ public class BankAccount {
 	private String accountNumber;
 	private int balance;
 	
-	//CTOR
+	//Constructor
 	public BankAccount(String accountHolderName, String accountNumber){
 		this.accountHolderName = accountHolderName;
 		this.accountNumber = accountNumber;
