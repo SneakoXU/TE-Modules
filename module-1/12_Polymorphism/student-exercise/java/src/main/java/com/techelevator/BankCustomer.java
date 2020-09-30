@@ -61,9 +61,9 @@ public class BankCustomer implements Accountable{
 		int accountBalance = 0;
 		for(Accountable account : accounts) {
 			accountBalance += account.getBalance();
-			//return account.getBalance();
+			
 		}
-		//return accountBalance;
+		
 		return accountBalance;
 		
 	}
