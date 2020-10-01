@@ -3,8 +3,15 @@ package com.techelevator.farm;
 public class OldMacdonald {
 	public static void main(String[] args) {
 
+		Cow myCow = new Cow();
+		Chicken myChicken = new Chicken();
+		Pig myPig = new Pig();
+		Cat myCat = new Cat();
+		
+		myCat.sleep(true);
+		
 		Singable[] singables =
-				new Singable[] {new Cow(), new Chicken(), new Pig(), new Tractor()};
+				new Singable[] {new Cow(), new Chicken(), new Pig(), new Tractor(), new Cat()};
 
 		for (Singable singable : singables) {
 			String name = singable.getName();

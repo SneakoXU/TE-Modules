@@ -10,4 +10,12 @@ public class Chicken extends FarmAnimal {
 		System.out.println("Chicken laid an egg!");
 	}
 
+	@Override
+	public String eat() {
+		// TODO Auto-generated method stub
+		return "bok bok bok";
+	}
+	
+	
+
 }

@@ -13,4 +13,10 @@ public class Pig extends FarmAnimal implements Sellable {
     public BigDecimal getPrice() {
         return price;
     }
+
+	@Override
+	public String eat() {
+		// TODO Auto-generated method stub
+		return "grunt grunt";
+	}
 }
