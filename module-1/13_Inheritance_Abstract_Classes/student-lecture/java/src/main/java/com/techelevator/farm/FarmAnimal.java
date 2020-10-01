@@ -28,7 +28,7 @@ public abstract class FarmAnimal implements Singable {
 		
 	public abstract String eat();
 	
-	private void snoreOn(boolean snoring, String baseSound) {
+	protected void snoreOn(boolean snoring, String baseSound) {
 		if(snoring) {
 			this.sound = "Ripsaw Zzzzz";
 		}else {

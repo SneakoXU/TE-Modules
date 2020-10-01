@@ -24,7 +24,6 @@ public class TriangleWall extends Wall {
 
 	@Override
 	public int getArea() {
-		// TODO Auto-generated method stub
 		return (base*height)/2;
 	}
 	

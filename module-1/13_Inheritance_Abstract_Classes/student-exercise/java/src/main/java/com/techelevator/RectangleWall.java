@@ -15,7 +15,6 @@ public class RectangleWall extends Wall {
 
 	@Override
 	public int getArea() {
-		// TODO Auto-generated method stub
 		return length * height;
 	}
 	
