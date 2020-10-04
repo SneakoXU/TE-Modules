@@ -30,7 +30,6 @@ public class WordCount {
 				}
 			}
 		}
-
 		return output;
 	}
 }
