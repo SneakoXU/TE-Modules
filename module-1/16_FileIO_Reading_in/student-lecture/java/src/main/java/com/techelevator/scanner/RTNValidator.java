@@ -12,6 +12,7 @@ public class RTNValidator {
 
 		printApplicationBanner();
 		
+		//Pattern for reading file from user
 		File inputFile = getInputFileFromUser();
 		try(Scanner fileScanner = new Scanner(inputFile)) {
 			while(fileScanner.hasNextLine()) {
@@ -33,12 +34,14 @@ public class RTNValidator {
 	}
 
 	@SuppressWarnings("resource")
+	//pattern for getting file from user
 	private static File getInputFileFromUser() {
 		Scanner userInput = new Scanner(System.in);
 		System.out.print("Please enter path to input file >>> ");
 		String path = userInput.nextLine();
 		
 		File inputFile = new File(path);
+		
 		if(inputFile.exists() == false) { // checks for the existence of a file
 			System.out.println(path+" does not exist");
 			System.exit(1); // Ends the program
