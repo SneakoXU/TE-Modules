@@ -51,7 +51,7 @@ public class QuizMaker {
 					userChoice = userChoice.replace("*", "");
 					System.out.println(i + ". " + userChoice);
 				}
-					/* -- LONG WAY OF PRINTING W/O A FOR LOOP -- */
+					/* -- LONG WAY OF PRINTING W/O A FOR LOOP AKA HARD CODING -- */
 //					userChoice1 = lines[1];
 //					userChoice1 = userChoice1.replace("*", "");
 //					System.out.println("1. " + userChoice1);
@@ -74,10 +74,10 @@ public class QuizMaker {
 				System.out.println("Your answer: ");
 				String userAnswer = in.nextLine();
 				if(userAnswer.equals(answer)) {
-					System.out.println("\nWOOT WOOT!!!! CORRECT!!!!\n");
+					System.out.println("\nCorrect!\n");
 					correct++;
 				}else {
-					System.out.println("\nWOMP!WOMP!WOMP! That is the incorrect answer.\n");
+					System.out.println("\nSorry that isn't correct!\n");
 				}
 				
 				
@@ -126,10 +126,10 @@ public class QuizMaker {
 				System.out.println("Your answer: ");
 				String userAnswer2 = in.nextLine();
 				if(userAnswer2.equals(answer)) {
-					System.out.println("\nWOOT WOOT!!!! CORRECT!!!!\n");
+					System.out.println("\nCorrect!\n");
 					correct++;
 				}else {
-					System.out.println("\nWOMP!WOMP!WOMP! That is the incorrect answer.\n");
+					System.out.println("\nSorry that isn't correct!\n");
 				}
 			}System.out.println("You got " + correct + " answer(s) correct out of a total 2 questions asked.");			
 			

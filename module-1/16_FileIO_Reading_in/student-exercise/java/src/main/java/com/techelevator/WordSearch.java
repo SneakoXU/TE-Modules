@@ -15,6 +15,7 @@ public class WordSearch {
 		Scanner in = new Scanner(System.in); 
 		System.out.println("What is the file that should be searched?");
 		File inputFile = new File(in.nextLine());
+		System.out.println(inputFile.getAbsolutePath());
 		
 		System.out.println("What is the search word you are looking for?");
 		String wordToBeSearched = in.nextLine();
