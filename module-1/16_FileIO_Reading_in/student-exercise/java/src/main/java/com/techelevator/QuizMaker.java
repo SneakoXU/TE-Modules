@@ -13,10 +13,7 @@ public class QuizMaker {
 		String question = "";
 		String answer = "";
 		String userChoice = "";
-		String userChoice1 = "";
-		String userChoice2 = "";
-		String userChoice3 = "";
-		String userChoice4 = "";
+
 		
 		
 		Scanner in = new Scanner(System.in); 
@@ -44,9 +41,14 @@ public class QuizMaker {
 					 * and removing asterisk
 					*/
 					userChoice = lines[i];
+					if(userChoice.contains("*")) {
+						answer = userChoice;
+						answer = answer.replace("*", "");
+						//System.out.println("This is the correct choice: " + answer);
+					}
 					userChoice = userChoice.replace("*", "");
 					System.out.println(i + ". " + userChoice);
-					
+				}
 					/* -- LONG WAY OF PRINTING W/O A FOR LOOP -- */
 //					userChoice1 = lines[1];
 //					userChoice1 = userChoice1.replace("*", "");
@@ -61,7 +63,7 @@ public class QuizMaker {
 //					userChoice3 = userChoice3.replace("*", "");
 //					System.out.println("4. " + userChoice4);
 //					
-				}
+				
 				
 			
 				
@@ -85,6 +87,11 @@ public class QuizMaker {
 					 * and removing asterisk
 					*/
 					userChoice = lines2[i];
+					if(userChoice.contains("*")) {
+						answer = userChoice;
+						answer = answer.replace("*", "");
+						//System.out.println("This is the correct choice: " + answer);
+					}
 					userChoice = userChoice.replace("*", "");
 					System.out.println(i + ". " + userChoice);
 				}
