@@ -13,6 +13,7 @@ public class QuizMaker {
 		String question = "";
 		String answer = "";
 		String userChoice = "";
+		int correct = 0;
 
 		
 		
@@ -26,6 +27,7 @@ public class QuizMaker {
 			while(fileScanner.hasNextLine()) {
 			
 				//reads first line and stores each string until the |
+				
 				String line = fileScanner.nextLine();
 				String[] lines = line.split("\\|");
 			
@@ -35,14 +37,14 @@ public class QuizMaker {
 				System.out.println(question);
 				
 				
-				for(int i=1; i<lines.length; i++) {
+				for(Integer i=1; i<lines.length; i++) {
 					/*
 					 * storing remaining arrays separated by | 
 					 * and removing asterisk
 					*/
 					userChoice = lines[i];
 					if(userChoice.contains("*")) {
-						answer = userChoice;
+						answer = i.toString();
 						answer = answer.replace("*", "");
 						//System.out.println("This is the correct choice: " + answer);
 					}
@@ -63,15 +65,21 @@ public class QuizMaker {
 //					userChoice3 = userChoice3.replace("*", "");
 //					System.out.println("4. " + userChoice4);
 //					
-				
-				
 			
-				
 				
 				/* NEED TO GET USER ANSWER FOR QUESTION 1 
 				 * AND CHECK IF CORRECT OR INCORRECT
 				 */
-
+				
+				System.out.println("Your answer: ");
+				String userAnswer = in.nextLine();
+				if(userAnswer.equals(answer)) {
+					System.out.println("\nWOOT WOOT!!!! CORRECT!!!!\n");
+					correct++;
+				}else {
+					System.out.println("\nWOMP!WOMP!WOMP! That is the incorrect answer.\n");
+				}
+				
 				
 				//reads second line and separates at |
 				String lineTwo = fileScanner.nextLine();
@@ -81,14 +89,14 @@ public class QuizMaker {
 				String question2 = lines2[0];
 				System.out.println(question2);
 				
-				for(int i=1; i<lines2.length; i++) {
+				for(Integer i=1; i<lines2.length; i++) {
 					/*
 					 * storing remaining arrays separated by | 
 					 * and removing asterisk
 					*/
 					userChoice = lines2[i];
 					if(userChoice.contains("*")) {
-						answer = userChoice;
+						answer = i.toString();
 						answer = answer.replace("*", "");
 						//System.out.println("This is the correct choice: " + answer);
 					}
@@ -112,8 +120,18 @@ public class QuizMaker {
 //				
 				/* NEED TO GET USER ANSWER FOR QUESTION 2 
 				 * AND CHECK IF CORRECT OR INCORRECT
-				 */		
-			}			
+				 */	
+				
+				
+				System.out.println("Your answer: ");
+				String userAnswer2 = in.nextLine();
+				if(userAnswer2.equals(answer)) {
+					System.out.println("\nWOOT WOOT!!!! CORRECT!!!!\n");
+					correct++;
+				}else {
+					System.out.println("\nWOMP!WOMP!WOMP! That is the incorrect answer.\n");
+				}
+			}System.out.println("You got " + correct + " answer(s) correct out of a total 2 questions asked.");			
 			
 	}catch (FileNotFoundException e) {
 		e.printStackTrace();
