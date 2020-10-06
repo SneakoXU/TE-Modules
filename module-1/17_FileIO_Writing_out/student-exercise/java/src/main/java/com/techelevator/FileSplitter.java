@@ -23,6 +23,8 @@ public class FileSplitter {
 			fileScanner = new Scanner(userFile);
 			while(fileScanner.hasNextLine()) {
 				linesOfText++;
+				String lines = fileScanner.nextLine();
+				String[] lineArrays = lines.split("\n");
 			}
 			
 		}catch (FileNotFoundException e) {
