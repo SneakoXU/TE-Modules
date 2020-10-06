@@ -135,7 +135,7 @@ public class QuizMaker {
 			
 	}catch (FileNotFoundException e) {
 		e.printStackTrace();
-	}
+	}in.close();
 
 }
 	
