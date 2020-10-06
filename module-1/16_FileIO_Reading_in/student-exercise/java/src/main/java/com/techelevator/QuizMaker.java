@@ -12,6 +12,7 @@ public class QuizMaker {
 	public static void main(String[] args) {
 		String question = "";
 		String answer = "";
+		String userChoice = "";
 		String userChoice1 = "";
 		String userChoice2 = "";
 		String userChoice3 = "";
@@ -27,32 +28,42 @@ public class QuizMaker {
 			fileScanner = new Scanner(inputFile);
 			while(fileScanner.hasNextLine()) {
 			
-				//stores each string until the |
+				//reads first line and stores each string until the |
 				String line = fileScanner.nextLine();
 				String[] lines = line.split("\\|");
-				
-				
+			
 				
 				//stores first array before the | as the question
 				question = lines[0];
 				System.out.println(question);
 				
-				/*
-				 * storing remaining arrays separated by | 
-				 * and removing asterisk
-				*/
-				userChoice1 = lines[1];
-				userChoice1 = userChoice1.replace("*", "");
-				System.out.println("1. " + userChoice1);
-				userChoice2 = lines[2];
-				userChoice2 = userChoice2.replace("*", "");
-				System.out.println("2. " + userChoice2);
-				userChoice3 = lines[3];
-				userChoice3 = userChoice3.replace("*", "");
-				System.out.println("3. " + userChoice3);
-				userChoice4 = lines[4];
-				userChoice3 = userChoice3.replace("*", "");
-				System.out.println("4. " + userChoice4);
+				
+				for(int i=1; i<lines.length; i++) {
+					/*
+					 * storing remaining arrays separated by | 
+					 * and removing asterisk
+					*/
+					userChoice = lines[i];
+					userChoice = userChoice.replace("*", "");
+					System.out.println(i + ". " + userChoice);
+					
+					/* -- LONG WAY OF PRINTING W/O A FOR LOOP -- */
+//					userChoice1 = lines[1];
+//					userChoice1 = userChoice1.replace("*", "");
+//					System.out.println("1. " + userChoice1);
+//					userChoice2 = lines[2];
+//					userChoice2 = userChoice2.replace("*", "");
+//					System.out.println("2. " + userChoice2);
+//					userChoice3 = lines[3];
+//					userChoice3 = userChoice3.replace("*", "");
+//					System.out.println("3. " + userChoice3);
+//					userChoice4 = lines[4];
+//					userChoice3 = userChoice3.replace("*", "");
+//					System.out.println("4. " + userChoice4);
+//					
+				}
+				
+			
 				
 				
 				/* NEED TO GET USER ANSWER FOR QUESTION 1 
@@ -68,23 +79,30 @@ public class QuizMaker {
 				String question2 = lines2[0];
 				System.out.println(question2);
 				
-				/*
-				 * storing remaining arrays separated by | 
-				 * and removing asterisk
-				*/
-				userChoice1 = lines2[1];
-				userChoice1 = userChoice1.replace("*", "");
-				System.out.println("1. " + userChoice1);
-				userChoice2 = lines2[2];
-				userChoice2 = userChoice2.replace("*", "");
-				System.out.println("2. " + userChoice2);
-				userChoice3 = lines2[3];
-				userChoice3 = userChoice3.replace("*", "");
-				System.out.println("3. " + userChoice3);
-				userChoice4 = lines2[4];
-				userChoice3 = userChoice3.replace("*", "");
-				System.out.println("4. " + userChoice4);
+				for(int i=1; i<lines2.length; i++) {
+					/*
+					 * storing remaining arrays separated by | 
+					 * and removing asterisk
+					*/
+					userChoice = lines2[i];
+					userChoice = userChoice.replace("*", "");
+					System.out.println(i + ". " + userChoice);
+				}
 				
+				/* -- LONG WAY OF PRINTING W/O A FOR LOOP -- */
+//				userChoice1 = lines2[1];
+//				userChoice1 = userChoice1.replace("*", "");
+//				System.out.println("1. " + userChoice1);
+//				userChoice2 = lines2[2];
+//				userChoice2 = userChoice2.replace("*", "");
+//				System.out.println("2. " + userChoice2);
+//				userChoice3 = lines2[3];
+//				userChoice3 = userChoice3.replace("*", "");
+//				System.out.println("3. " + userChoice3);
+//				userChoice4 = lines2[4];
+//				userChoice3 = userChoice3.replace("*", "");
+//				System.out.println("4. " + userChoice4);
+//				
 				/* NEED TO GET USER ANSWER FOR QUESTION 2 
 				 * AND CHECK IF CORRECT OR INCORRECT
 				 */		
@@ -95,4 +113,6 @@ public class QuizMaker {
 	}
 
 }
+	
+	
 }
