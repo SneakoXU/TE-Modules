@@ -11,21 +11,34 @@ public class FileSplitter {
 	public static void main(String[] args) throws IOException {
 		
 		int linesOfText = 0;
+		int fileNumber = 1;
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("Where is the input file (please include the path to the file)?");
 		String path = userInput.nextLine();
-		File userFile = new File(path);
+		File inputFile = new File(path);
 		
 		System.out.println("How many lines of text (max) should there be in the split files?");
 		String maxLines = userInput.nextLine();
-		Scanner fileScanner;
-		try {
-			fileScanner = new Scanner(userFile);
-			while(fileScanner.hasNextLine()) {
-				linesOfText++;
-				String lines = fileScanner.nextLine();
-				String[] lineArrays = lines.split("\n");
-			}
+		
+		try (
+			Scanner dataInput = new Scanner(inputFile);	
+			PrintWriter dataOutput = new PrintWriter("input-1.txt")	
+			){
+				while(dataInput.hasNext()) {
+					linesOfText++;
+					String lineOfInput = dataInput.nextLine();
+					dataOutput.println(lineOfInput);
+				}
+		
+				
+
+					
+					
+				
+			
+				
+				//fileNumber++;
+			//}
 			
 		}catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -33,22 +46,15 @@ public class FileSplitter {
 		
 		System.out.println("The input file has " + linesOfText + " lines of text.");
 		
-		int numberOfFiles = 0;
-		Integer intMaxLines = Integer.parseInt(maxLines);
-		numberOfFiles = linesOfText/intMaxLines;
-		
 		System.out.println("\n**GENERATING OUTPUT**\n");
 		
-		for(int i = 1; i<=numberOfFiles; i++) {
-			File splitFile = new File("input-" + i + ".txt");
-			splitFile.createNewFile();
-			try(PrintWriter writer = new PrintWriter(splitFile)){
-				
-			}
-					
-		}
+//		int numberOfFiles = 0;
 		
+//		numberOfFiles = linesOfText/intMaxLines;
 		
+
+		
+		userInput.close();
 	}
 
 }

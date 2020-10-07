@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 
 public class FizzWriter {
 
@@ -19,6 +18,8 @@ public class FizzWriter {
 			for(Integer i=1; i<=300; i++) {
 				String iAsString = Integer.toString(i);
 				if(i%3==0 && i%5==0) {
+					writer.println("FizzBuzz");
+				}else if(iAsString.contains("3") && iAsString.contains("5")) {
 					writer.println("FizzBuzz");
 				}else if(i%3==0 || iAsString.contains("3")) {
 					writer.println("Fizz");
