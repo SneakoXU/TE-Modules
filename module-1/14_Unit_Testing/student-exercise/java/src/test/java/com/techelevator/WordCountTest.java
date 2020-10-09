@@ -32,7 +32,6 @@ public class WordCountTest {
 				expectedOutput.put("c", 1);
 				
 		Assert.assertEquals("Output returned is incorrect", expectedOutput, testWordCount.getCount(testWords));		
-		
 	}
 	
 	@Test
