@@ -3,7 +3,7 @@
 -- 1. All of the films that Nick Stallone has appeared in
 -- (30 rows)
 
-SELECT *
+SELECT f.title
 FROM actor a
         JOIN film_actor fa
                 ON a.actor_id = fa.actor_id
