@@ -1,24 +1,55 @@
 -- INSERT
 
 -- 1. Add Klingon as a spoken language in the USA
+
+INSERT INTO countrylanguage(countrycode, language, isofficial, percentage)
+VALUES('USA', 'Klingon', false, 1.0);
+
 -- 2. Add Klingon as a spoken language in Great Britain
 
+INSERT INTO countrylanguage(countrycode, language, isofficial, percentage)
+VALUES('GBR', 'Klingon', true, 99.9);
 
 -- UPDATE
 
 -- 1. Update the capital of the USA to Houston
+
+UPDATE country
+SET capital = (SELECT id FROM city WHERE name = 'Houston')
+WHERE code = 'USA';
+
+SELECT c.name, cty.name
+FROM country c
+        JOIN city cty
+                ON c.capital = cty.id
+WHERE c.code = 'USA';                
+
+
 -- 2. Update the capital of the USA to Washington DC and the head of state
+
+UPDATE country
+SET 
+        capital = (SELECT id FROM city WHERE name = 'Washington'),
+        headofstate = 'Mark Wahberg'
+WHERE code = 'USA';
+
 
 
 -- DELETE
 
 -- 1. Delete English as a spoken language in the USA
+
+DELETE FROM countrylanguage WHERE countrycode = 'USA' AND language = 'English';
+
 -- 2. Delete all occurrences of the Klingon language 
+
 
 
 -- REFERENTIAL INTEGRITY
 
 -- 1. Try just adding Elvish to the country language table.
+
+
 
 -- 2. Try inserting English as a spoken language in the country ZZZ. What happens?
 
@@ -45,6 +76,19 @@ SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS
 
 -- 1. Try deleting all of the rows from the country language table and roll it back.
 
+BEGIN TRANSACTION;
+        SELECT * FROM countrylanguage;
+        DELETE FROM countrylanguage;        
+        SELECT * FROM countrylanguage;
+ROLLBACK;
+
+
 -- 2. Try updating all of the cities to be in the USA and roll it back
+
+BEGIN TRANSACTION;
+        SELECT COUNT(*) FROM city WHERE countrycode = 'USA';
+        UPDATE city SET countrycode = 'USA';
+        SELECT COUNT(*) FROM city WHERE countrycode = 'USA';
+ROLLBACK;      
 
 -- 3. Demonstrate two different SQL connections trying to access the same table where one happens to be inside of a transaction but hasn't committed yet.
