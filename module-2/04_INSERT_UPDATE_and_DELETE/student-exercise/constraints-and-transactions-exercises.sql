@@ -3,22 +3,50 @@
 
 -- 1. Add actors, Hampton Avenue, and Lisa Byway to the actor table.
 
+INSERT INTO actor (first_name, last_name)
+VALUES
+        ('Hampton', 'Avenue'), 
+        ('Lisa', 'Byway');
+       
 -- 2. Add "Euclidean PI", "The epic story of Euclid as a pizza delivery boy in
 -- ancient Greece", to the film table. The movie was released in 2008 in English.
 -- Since its an epic, the run length is 3hrs and 18mins. There are no special
 -- features, the film speaks for itself, and doesn't need any gimmicks.
 
+INSERT INTO film (title, description, release_year, language_id, length)
+VALUES ('Euclidean PI', 'The epic story of Euclid as a pizza delivery boy in ancient Greece', 2008, 1, 198);
+
 -- 3. Hampton Avenue plays Euclid, while Lisa Byway plays his slightly
 -- overprotective mother, in the film, "Euclidean PI". Add them to the film.
 
+BEGIN TRANSACTION;
+INSERT INTO film_actor (film_id, actor_id)
+VALUES ((SELECT film_id FROM film WHERE title = 'Euclidean PI'), (SELECT actor_id FROM actor WHERE first_name = 'Hampton' AND last_name = 'Avenue')),
+       ((SELECT film_id FROM film WHERE title = 'Euclidean PI'), (SELECT actor_id FROM actor WHERE first_name = 'Lisa' AND last_name = 'Byway'));
+       
+SELECT *
+FROM film_actor;       
+COMMIT;
 -- 4. Add Mathmagical to the category table.
+
+INSERT INTO category (name)
+VALUES ('Mathmagical');
 
 -- 5. Assign the Mathmagical category to the following films, "Euclidean PI",
 -- "EGG IGBY", "KARATE MOON", "RANDOM GO", and "YOUNG LANGUAGE"
 
+BEGIN TRANSACTION;
+UPDATE film_category
+SET category_id = (SELECT category_id FROM category WHERE name = 'Mathmagical')
+WHERE film_id IN (SELECT film_id FROM film WHERE title IN( 'Euclidean PI', 'EGG IGBY', 'KARATE MOON', 'RANDOM GO', 'YOUNG LANGUAGE' ));
+        
+COMMIT;        
+
 -- 6. Mathmagical films always have a "G" rating, adjust all Mathmagical films
 -- accordingly.
 -- (5 rows affected)
+
+
 
 -- 7. Add a copy of "Euclidean PI" to all the stores.
 

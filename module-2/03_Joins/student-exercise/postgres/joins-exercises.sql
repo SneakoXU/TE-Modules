@@ -14,7 +14,7 @@ WHERE a.actor_id = 44;
 -- 2. All of the films that Rita Reynolds has appeared in
 -- (20 rows)
 
-SELECT *
+SELECT f.title
 FROM actor a
         JOIN film_actor fa
                 ON a.actor_id = fa.actor_id
