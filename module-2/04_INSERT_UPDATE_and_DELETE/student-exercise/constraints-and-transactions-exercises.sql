@@ -55,8 +55,7 @@ FROM film_category
 WHERE  film.film_id = film_category.film_id AND
 film_category.category_id = (SELECT category_id FROM category WHERE name = 'Mathmagical');
         
-COMMIT; 
-                                             
+COMMIT;                                        
 
 -- 7. Add a copy of "Euclidean PI" to all the stores.
 BEGIN TRANSACTION;
