@@ -10,6 +10,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 public class JDBCCityDAO implements CityDAO {
 
+	
 	private JdbcTemplate jdbcTemplate;
 
 	public JDBCCityDAO(DataSource dataSource) {

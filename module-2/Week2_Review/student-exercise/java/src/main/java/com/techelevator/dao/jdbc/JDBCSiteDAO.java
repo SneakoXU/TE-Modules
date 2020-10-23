@@ -1,6 +1,7 @@
 package com.techelevator.dao.jdbc;
 
 import com.techelevator.dao.SiteDAO;
+import com.techelevator.model.Park;
 import com.techelevator.model.Site;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -20,7 +21,15 @@ public class JDBCSiteDAO implements SiteDAO {
 
     @Override
     public List<Site> getSitesThatAllowRVs(int parkId) {
-        return null;
+    	List<Site> sitesThatAllowRVs = new ArrayList<>();
+    	String sqlForSites = "SELECT s.max_rv_length FROM site s JOIN campground c ON s.campground_id = c.campground_id JOIN park p ON c.park_id = p.park_id WHERE s.max_rv_length > 0 AND p.park_id = ?";
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sqlForSites, parkId);
+        while(rows.next()) {
+    		Site site = mapRowToSite(rows);
+    		sitesThatAllowRVs.add(site); 		
+    	}
+    	
+    	return sitesThatAllowRVs;
     }
 
     private Site mapRowToSite(SqlRowSet results) {
