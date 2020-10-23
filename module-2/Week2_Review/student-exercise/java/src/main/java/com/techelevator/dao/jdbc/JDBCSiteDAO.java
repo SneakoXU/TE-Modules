@@ -31,6 +31,11 @@ public class JDBCSiteDAO implements SiteDAO {
     	
     	return sitesThatAllowRVs;
     }
+    
+    public List<Site> availableSitesByParkId(int parkId){
+    	//ADD CODE
+    	return null;
+    }
 
     private Site mapRowToSite(SqlRowSet results) {
         Site site = new Site();
