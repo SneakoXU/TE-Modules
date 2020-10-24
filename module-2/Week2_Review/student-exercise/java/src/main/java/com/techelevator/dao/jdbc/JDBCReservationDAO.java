@@ -24,7 +24,7 @@ public class JDBCReservationDAO implements ReservationDAO {
     public int createReservation(int siteId, String name, LocalDate fromDate, LocalDate toDate) {
         int confirmationID = 0;
           Reservation bookedReservation = new Reservation();
-          String sqlToCreateReservation = "INSERT INTO reservation (site_id, name, from_date, to_date, create_date) VALUES (?,?,?,?,current_date)";
+          String sqlToCreateReservation = "INSERT INTO reservation (site_id, name, from_date, to_date, create_date) VALUES (?,?,?,?,CURRENT_DATE)";
 //        bookedReservation.setReservationId(getNextReservationId());
           jdbcTemplate.update(sqlToCreateReservation, siteId, name, fromDate, toDate);
 //        confirmationID = bookedReservation.getReservationId();
@@ -38,18 +38,33 @@ public class JDBCReservationDAO implements ReservationDAO {
     	return confirmationID;
     }
     
-	private int getNextReservationId() {
-		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("SELECT nextval('seq_reservation_id')");
-		if(nextIdResult.next()) {
-			return nextIdResult.getInt(1);
-		} else {
-			throw new RuntimeException("Something went wrong while getting an id for the new city");
-		}
-	}
+//	private int getNextReservationId() {
+//		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("SELECT nextval('seq_reservation_id')");
+//		if(nextIdResult.next()) {
+//			return nextIdResult.getInt(1);
+//		} else {
+//			throw new RuntimeException("Something went wrong while getting an id for the new city");
+//		}
+//	}
 	
 	public List<Reservation> findUpcomingReservationsByParkId(Park parkId){
-		//ADD CODE!
-		return null;
+	
+		List<Reservation> upcomingReservations = new ArrayList<>();
+		String sqlForUpcomingReservations = "SELECT r.reservation_id, r.site_id, r.name, r.from_date AS start_date, r.to_date AS end_date, r.create_date \r\n" + 
+				"FROM reservation r \r\n" + 
+				"        JOIN site s ON r.site_id = s.site_id\r\n" + 
+				"        JOIN campground c ON s.campground_id = c.campground_id\r\n" + 
+				"        JOIN park p ON c.park_id = p.park_id\r\n" + 
+				"WHERE r.from_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '30 days' AND p.park_id = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlForUpcomingReservations, parkId);
+		while(results.next()) {
+			Reservation upcomingReservation = mapRowToReservation(results);
+			upcomingReservations.add(upcomingReservation);
+			
+		}
+		
+		
+		return upcomingReservations;
 	}
 
     private Reservation mapRowToReservation(SqlRowSet results) {
