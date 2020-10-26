@@ -22,24 +22,30 @@ public class JDBCReservationDAO implements ReservationDAO {
 
     @Override
     public int createReservation(int siteId, String name, LocalDate fromDate, LocalDate toDate) {
-        int confirmationID = 0;
-          Reservation bookedReservation = new Reservation();
-          String sqlToCreateReservation = "INSERT INTO reservation (site_id, name, from_date, to_date, create_date) VALUES (?,?,?,?,CURRENT_DATE)";
-//        bookedReservation.setReservationId(getNextReservationId());
+          int confirmationID = 0;
+          
+          String sqlToCreateReservation = "INSERT INTO reservation (site_id, name, from_date, to_date) VALUES (?,?,?,?)";
+//          bookedReservation.setReservationId(getNextReservationId());
           jdbcTemplate.update(sqlToCreateReservation, siteId, name, fromDate, toDate);
-//        confirmationID = bookedReservation.getReservationId();
-          SqlRowSet rows = jdbcTemplate.queryForRowSet("SELECT reservation_id FROM reservation WHERE name = ?", bookedReservation.getName());
-          if(!rows.next()) {
-        	  return 0;
+          SqlRowSet rows = jdbcTemplate.queryForRowSet("SELECT * FROM reservation WHERE site_id = ? AND name = ? AND from_date = ? AND to_date = ?", siteId, name, fromDate, toDate);
+//          Reservation bookedReservation = mapRowToReservation(rows);
+//          confirmationID = bookedReservation.getReservationId();
+           if(rows.next()) {
+        	  Reservation bookedReservation = mapRowToReservation(rows);
+        	  confirmationID = bookedReservation.getReservationId();
           }
-          confirmationID = bookedReservation.getReservationId();
-          		  
+          else {
+        	  confirmationID = 0;
+          }
+//          else {
+//          confirmationID = bookedReservation.getReservationId();
+//          } 
     	
     	return confirmationID;
     }
     
-//	private int getNextReservationId() {
-//		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("SELECT nextval('seq_reservation_id')");
+//	public int getNextReservationId() {
+//		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("SELECT nextval('reservation_reservation_id_seq')");
 //		if(nextIdResult.next()) {
 //			return nextIdResult.getInt(1);
 //		} else {
