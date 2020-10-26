@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class JDBCReservationDAOTests extends BaseDAOTests {
 
@@ -17,7 +18,7 @@ public class JDBCReservationDAOTests extends BaseDAOTests {
     @Before
     public void setup() {
         dao = new JDBCReservationDAO(dataSource);
-        //String sqlInsertReservation = "INSERT INTO reservation (site_id, name, from_date, to_date) VALUES  ( "
+       
     }
 
     @Test
@@ -26,11 +27,13 @@ public class JDBCReservationDAOTests extends BaseDAOTests {
                 "TEST NAME",
                 LocalDate.now().plusDays(1),
                 LocalDate.now().plusDays(3));
-       Reservation test = new Reservation();
-       test.setReservationId(reservationCreated);
-
-        assertEquals(reservationCreated, test.getReservationId());
+//       Reservation test = new Reservation();
+//       test.setReservationId(reservationCreated);
+//
+        assertEquals(reservationCreated, 1);
+        assertNotEquals(reservationCreated, 0);
      
     }
 
+    
 }

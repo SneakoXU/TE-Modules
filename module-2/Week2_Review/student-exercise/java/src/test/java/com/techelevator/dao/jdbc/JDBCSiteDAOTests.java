@@ -23,7 +23,7 @@ public class JDBCSiteDAOTests extends BaseDAOTests {
     public void getSitesThatAllowRVs_Should_ReturnSites() {
         List<Site> sites = dao.getSitesThatAllowRVs(1);
 
-        assertEquals(18,sites.size());
+        assertEquals(20,sites.size());
     }
 
     public void getAvailableSites_Should_ReturnSites() {
@@ -32,5 +32,10 @@ public class JDBCSiteDAOTests extends BaseDAOTests {
 
     public void getAvailableSitesDateRange_Should_ReturnSites() {
 
+    	 List<Site> testSites = dao.futureAvailableSites(1, LocalDate.now().plusDays(3), LocalDate.now().plusDays(5));
+    	 
+    	 assertEquals(21, testSites.size());
+    	 
+    			
     }
 }

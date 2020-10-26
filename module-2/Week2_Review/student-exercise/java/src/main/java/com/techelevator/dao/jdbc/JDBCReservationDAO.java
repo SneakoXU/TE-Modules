@@ -22,24 +22,19 @@ public class JDBCReservationDAO implements ReservationDAO {
 
     @Override
     public int createReservation(int siteId, String name, LocalDate fromDate, LocalDate toDate) {
-          int confirmationID = 0;
+           
           
           String sqlToCreateReservation = "INSERT INTO reservation (site_id, name, from_date, to_date) VALUES (?,?,?,?)";
-//          bookedReservation.setReservationId(getNextReservationId());
-          jdbcTemplate.update(sqlToCreateReservation, siteId, name, fromDate, toDate);
-          SqlRowSet rows = jdbcTemplate.queryForRowSet("SELECT * FROM reservation WHERE site_id = ? AND name = ? AND from_date = ? AND to_date = ?", siteId, name, fromDate, toDate);
-//          Reservation bookedReservation = mapRowToReservation(rows);
-//          confirmationID = bookedReservation.getReservationId();
-           if(rows.next()) {
-        	  Reservation bookedReservation = mapRowToReservation(rows);
-        	  confirmationID = bookedReservation.getReservationId();
-          }
-          else {
-        	  confirmationID = 0;
-          }
+          int confirmationID= jdbcTemplate.update(sqlToCreateReservation, siteId, name, fromDate, toDate);
+//          SqlRowSet rows = jdbcTemplate.queryForRowSet("SELECT * FROM reservation WHERE site_id = ? AND name = ? AND from_date = ? AND to_date = ?", siteId, name, fromDate, toDate);
+//
+//           if(rows.next()) {
+//        	  Reservation bookedReservation = mapRowToReservation(rows);
+//        	  confirmationID = bookedReservation.getReservationId();
+//          }
 //          else {
-//          confirmationID = bookedReservation.getReservationId();
-//          } 
+//        	  confirmationID = 0;
+//          }
     	
     	return confirmationID;
     }
