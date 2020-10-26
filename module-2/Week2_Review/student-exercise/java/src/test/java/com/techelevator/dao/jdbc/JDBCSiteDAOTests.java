@@ -26,10 +26,16 @@ public class JDBCSiteDAOTests extends BaseDAOTests {
         assertEquals(20,sites.size());
     }
 
+    @Test
     public void getAvailableSites_Should_ReturnSites() {
+    	List<Site> testSites = dao.availableSitesByParkId(1);
+    	
+    	assertEquals(15, testSites.size());
+    	
 
     }
 
+    @Test
     public void getAvailableSitesDateRange_Should_ReturnSites() {
 
     	 List<Site> testSites = dao.futureAvailableSites(1, LocalDate.now().plusDays(3), LocalDate.now().plusDays(5));

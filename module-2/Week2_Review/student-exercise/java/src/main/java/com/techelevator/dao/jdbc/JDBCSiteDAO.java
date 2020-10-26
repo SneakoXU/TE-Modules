@@ -32,16 +32,16 @@ public class JDBCSiteDAO implements SiteDAO {
     	return sitesThatAllowRVs;
     }
     
+    @Override
     public List<Site> availableSitesByParkId(int parkId){
     	
     	List<Site> sitesAvailable = new ArrayList<>();
-    	String sqlForSites = "SELECT s.site_id FROM site s LEFT OUTER JOIN reservation r ON s.site_id = r.site_id JOIN campground c ON s.campground_id = c.campground_id JOIN park p ON c.park_id = p.park_id WHERE r.site_id IS NULL AND p.park_id = ?";
+    	String sqlForSites = "SELECT * FROM site s LEFT OUTER JOIN reservation r ON s.site_id = r.site_id JOIN campground c ON s.campground_id = c.campground_id JOIN park p ON c.park_id = p.park_id WHERE r.site_id IS NULL AND p.park_id = ?";
     	SqlRowSet results = jdbcTemplate.queryForRowSet(sqlForSites, parkId);
     	while(results.next()) {
     		Site availSite = mapRowToSite(results);
     		sitesAvailable.add(availSite);
     	}
-    	
     	
     	return sitesAvailable;
     }
@@ -50,13 +50,13 @@ public class JDBCSiteDAO implements SiteDAO {
     public List<Site> futureAvailableSites(int parkId, LocalDate fromDate, LocalDate toDate){
     	
     	List<Site> futureSites = new ArrayList<>();
-    	String sqlForFutureSites = "SELECT s.site_id, p.park_id\r\n" + 
-    			"FROM site s\r\n" + 
-    			"        JOIN reservation r ON s.site_id = r.reservation_id\r\n" + 
-    			"        JOIN campground c ON s.campground_id = c.campground_id\r\n" + 
-    			"        JOIN park p ON c.park_id = p.park_id" +
-    			"WHERE p.parkId = ? AND NOT BETWEEN ? AND ?";
-    	SqlRowSet results = jdbcTemplate.queryForRowSet(sqlForFutureSites, parkId, fromDate,toDate);
+    	String sqlForFutureSites = "SELECT * " + 
+    			"FROM site s " + 
+    			"        JOIN reservation r ON s.site_id = r.site_id " + 
+    			"        JOIN campground c ON s.campground_id = c.campground_id " + 
+    			"        JOIN park p ON c.park_id = p.park_id " +
+    			"WHERE p.park_id = ? AND (r.from_date NOT BETWEEN ? AND ?) AND (r.to_date NOT BETWEEN ? AND ?) ";
+    	SqlRowSet results = jdbcTemplate.queryForRowSet(sqlForFutureSites, parkId, fromDate,toDate, fromDate, toDate);
     	while(results.next()) {
     		Site futureAvailSite = mapRowToSite(results);
     		futureSites.add(futureAvailSite);

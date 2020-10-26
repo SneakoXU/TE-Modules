@@ -48,14 +48,18 @@ public class JDBCReservationDAO implements ReservationDAO {
 //		}
 //	}
 	
-	public List<Reservation> findUpcomingReservationsByParkId(Park parkId){
+    @Override
+	public List<Reservation> findUpcomingReservationsByParkId(int parkId){
 	
 		List<Reservation> upcomingReservations = new ArrayList<>();
-		String sqlForUpcomingReservations = "SELECT r.reservation_id, r.site_id, r.name, r.from_date AS start_date, r.to_date AS end_date, r.create_date \r\n" + 
-				"FROM reservation r \r\n" + 
-				"        JOIN site s ON r.site_id = s.site_id\r\n" + 
-				"        JOIN campground c ON s.campground_id = c.campground_id\r\n" + 
-				"        JOIN park p ON c.park_id = p.park_id\r\n" + 
+		String sqlForUpcomingReservations = "SELECT * " + 
+				"FROM reservation r" + 
+				"        JOIN site s " + 
+				"                ON r.site_id = s.site_id " + 
+				"                JOIN campground c " + 
+				"                        ON s.campground_id = c.campground_id " + 
+				"                        JOIN park p " + 
+				"                                ON c.park_id = p.park_id " + 
 				"WHERE r.from_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '30 days' AND p.park_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlForUpcomingReservations, parkId);
 		while(results.next()) {

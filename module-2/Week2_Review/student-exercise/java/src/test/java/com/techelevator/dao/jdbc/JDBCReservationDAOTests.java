@@ -34,6 +34,14 @@ public class JDBCReservationDAOTests extends BaseDAOTests {
         assertNotEquals(reservationCreated, 0);
      
     }
+    
+    @Test
+    public void upcoming_reservations_should_return_all_reservations_within_next_30_days() {
+    	List<Reservation> testReservations = dao.findUpcomingReservationsByParkId(1);
+    	
+    	assertEquals(testReservations.size(), 12);
+    	
+    }
 
     
 }
