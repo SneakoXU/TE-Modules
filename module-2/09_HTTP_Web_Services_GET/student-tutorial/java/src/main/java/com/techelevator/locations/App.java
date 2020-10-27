@@ -13,22 +13,25 @@ public class App {
   private static final String API_URL = "http://localhost:3000/locations";
 
   public static void main(String[] args) {
-    //int menuSelection = 999;
-
-    ConsoleService consoleService = new ConsoleService();
-    LocationService locationService = new LocationService("http://localhost:3000/locations/");
-    int menuSelection = 0;
-    Scanner scanner = new Scanner(System.in);
-    consoleService.printMainMenu();
-    try {
-      menuSelection = Integer.parseInt(scanner.nextLine());
+	  run();
+  }
+  
+  private static void run() {
+	  
+	
+	ConsoleService consoleService = new ConsoleService();
+	LocationService locationService = new LocationService(API_URL);
+//	Scanner scanner = new Scanner (System.in);
+	int menuSelection = 999;
+//	menuSelection = consoleService.printMainMenu();
+	
+	
       while (menuSelection != 0) {
-    	     
+    	  menuSelection = consoleService.printMainMenu();
           if (menuSelection == 1) {
             // TODO: list all locations
-        	  
-        	  consoleService.printLocations(locationService.getAll());
-
+        	  System.out.println("WUT");
+        	 consoleService.printLocations(locationService.getAll()); 
           } else if (menuSelection == 2) {
             // TODO: get one location
 
@@ -40,17 +43,8 @@ public class App {
             System.out.println("Invalid Selection");
           }
         }
-    } catch (NumberFormatException exception) {
-      System.out.println("Error parsing the input for menu selection.");
-    }
-    System.out.println("");
-    
-    
-    
-   // menuSelection = Integer.parseInt(scanner.nextLine());
-
-
-
+//      scanner.close();
+      System.exit(0);
   }
 
 }

@@ -14,8 +14,9 @@ public class ConsoleService {
 
     /**
      * Prints the main menu for the client application
-     * @return
+     * @return 
      */
+    //changed from returning an int to a void method since i could not call it correctly
     public int printMainMenu() {
         int menuSelection;
         System.out.println("");
