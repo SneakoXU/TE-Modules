@@ -33,14 +33,13 @@ public class AuctionService {
 
     public Auction getOne(int id) {
     	
+    	try {
     	Auction auction = restTemplate.getForObject(BASE_URL + "/" + id, Auction.class);
-    	
-        return auction;
-        
-
-        //api code here
-        //return null;
-
+    	 return auction;
+    	}catch (NumberFormatException nfe) {
+    		System.out.println("Invalid input.");
+    		return null;
+    	}
     }
 
     public Auction[] getByTitle(String title) {
@@ -54,7 +53,6 @@ public class AuctionService {
         	return new Auction[] {};
         }
         return searchResults;
-        //api code here
        
         
     }
