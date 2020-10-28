@@ -14,7 +14,7 @@ public class App {
         LocationService locationService = new LocationService("http://localhost:3000/locations/");
 
 
-        while (menuSelection != 0) {
+        while (menuSelection != 0) {           
             menuSelection = consoleService.printMainMenu();
             if (menuSelection == 1) { // List all locations
                 consoleService.printLocations(locationService.getAll());
