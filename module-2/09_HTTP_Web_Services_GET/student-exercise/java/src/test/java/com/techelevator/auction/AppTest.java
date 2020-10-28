@@ -66,6 +66,8 @@ public class AppTest {
         }
 
         @Test
+        
+        //FOR SOME REASON MY TESTS ARE NOT USING THE MOCK INFORMATION -- app.listAllAuctions() is checking the array from the actual app class
         public void listAllAuctions() {
                 initForScannerPurposes("1");
                 mockHelper("http://localhost:3000/auctions");
