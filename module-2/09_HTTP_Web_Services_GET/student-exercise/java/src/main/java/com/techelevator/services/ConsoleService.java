@@ -2,8 +2,8 @@ package com.techelevator.services;
 
 import java.util.Scanner;
 
-import com.techelevator.models.Auction;
-
+import com.techelevator.auction.Auction;
+//import com.techelevator.models.Auction;
 public class ConsoleService {
 
     private final Scanner scanner;

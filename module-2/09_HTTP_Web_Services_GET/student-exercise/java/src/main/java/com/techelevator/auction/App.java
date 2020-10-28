@@ -5,11 +5,18 @@ import java.util.Scanner;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import com.techelevator.services.AuctionService;
+import com.techelevator.services.ConsoleService;
+import com.techelevator.auction.Auction;
+//import com.techelevator.models.Auction;
+
 public class App {
 
     private static final String API_URL = "http://localhost:3000/auctions";
     public static RestTemplate restTemplate = new RestTemplate();
     private static Scanner scanner;
+    private static ConsoleService consoleService = new ConsoleService();
+    private static AuctionService auctionService = new AuctionService(API_URL);
 
     public static void main(String[] args) {
         init();
@@ -24,23 +31,19 @@ public class App {
     }
 
     public static Auction[] listAllAuctions() {
-        // api code here
-        return null;
+    	return auctionService.getAll();   
     }
 
     public static Auction listDetailsForAuction() {
-        // api code here
-        return null;
+    	return auctionService.getOne(consoleService.promptForAuction(listAllAuctions(), "search"));
     }
 
     public static Auction[] findAuctionsSearchTitle() {
-        // api code here
-        return null;
+        return auctionService.getByTitle(consoleService.promptForAuctionTitle());
     }
 
     public static Auction[] findAuctionsSearchPrice() {
-        // api code here
-        return null;
+    	return auctionService.getByPrice(consoleService.promptForAuctionPrice());
     }
 
     private static void run() {
@@ -58,8 +61,13 @@ public class App {
             if (menuSelection == 1) {
                 printAuctions(listAllAuctions());
             } else if (menuSelection == 2) {
+            	
+            	//int auctionID = Integer.parseInt(scanner.nextLine());
+            	
                 printAuction(listDetailsForAuction());
             } else if (menuSelection == 3) {
+            	//System.out.println("Please enter search query: ");
+            	//String searchString = scanner.nextLine();
                 printAuctions(findAuctionsSearchTitle());
             } else if (menuSelection == 4) {
                 printAuctions(findAuctionsSearchPrice());

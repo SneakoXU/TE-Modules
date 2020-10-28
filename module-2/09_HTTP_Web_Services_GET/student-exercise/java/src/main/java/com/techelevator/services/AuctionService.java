@@ -4,7 +4,8 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
-import com.techelevator.models.Auction;
+import com.techelevator.auction.Auction;
+
 
 public class AuctionService {
 
@@ -18,31 +19,57 @@ public class AuctionService {
 
 
     public Auction[] getAll() {
-        
-        //api code here
-        return null;
+    	Auction[] auctions = null;
+    	try {
+    		auctions = restTemplate.getForObject(BASE_URL, Auction[].class);
+    		
+    	}catch(Exception ex) {
+    		System.out.println("Unable to retrieve auctions.");
+    		return new Auction[] {};
+    	}
+    	return auctions;
     
     }
 
     public Auction getOne(int id) {
+    	
+    	Auction auction = restTemplate.getForObject(BASE_URL + "/" + id, Auction.class);
+    	
+        return auction;
+        
 
         //api code here
-        return null;
+        //return null;
 
     }
 
     public Auction[] getByTitle(String title) {
-
+    	Auction[] searchResults = null;
+        
+        try {
+        	searchResults = restTemplate.getForObject(BASE_URL + "?title_like=" + title, Auction[].class);
+        	
+        }catch(Exception ex) {
+        	System.out.println("Error");
+        	return new Auction[] {};
+        }
+        return searchResults;
         //api code here
-        return null;
+       
         
     }
 
     public Auction[] getByPrice(double price) {
-
-        //api code here
-        return null;
-
+ 	Auction[] auctionsByPrice = null;
+    	
+    	try {
+    		auctionsByPrice = restTemplate.getForObject(BASE_URL + "?currentBid_lte=" + price, Auction[].class);
+    		
+    	}catch (NumberFormatException nfe) {
+    		System.out.println("Error");
+    	}
+        return auctionsByPrice;
+        
     }
 
 }

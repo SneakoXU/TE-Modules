@@ -29,7 +29,18 @@ public class HotelService {
    */
   public Reservation addReservation(String newReservation) {
     // TODO: Implement method
-    return null;
+	Reservation reservation = makeReservation(newReservation);  
+	if(reservation == null) {
+		return null;
+	}
+	
+	HttpHeaders header = new HttpHeaders();
+	header.setContentType(MediaType.APPLICATION_JSON);
+	
+	HttpEntity<Reservation> entity = new HttpEntity<>(reservation, header);
+	reservation = restTemplate.postForObject(BASE_URL + "hotels/" + reservation.getHotelID() + "/reservations", entity, Reservation.class);
+	
+    return reservation;
   }
 
   /**
@@ -39,18 +50,30 @@ public class HotelService {
    * @param CSV
    * @return
    */
-  public Reservation updateReservation(String CSV) {
+  public Reservation updateReservation(String updatedReservation) {
     // TODO: Implement method
-    return null;
+	Reservation reservation = makeReservation(updatedReservation);  
+	if(reservation == null) {
+		return null;
+	}  
+    
+	HttpHeaders header = new HttpHeaders();
+	header.setContentType(MediaType.APPLICATION_JSON);
+	HttpEntity<Reservation> entity = new HttpEntity<>(reservation, header);
+	restTemplate.put(BASE_URL + "reservations/" + reservation.getId(), entity);
+	
+	
+	return reservation;
   }
 
   /**
    * Delete an existing reservation
    *
-   * @param id
+   * @param reservationIdToDelete
    */
-  public void deleteReservation(int id) {
+  public void deleteReservation(int reservationIdToDelete) {
     // TODO: Implement method
+	restTemplate.delete(BASE_URL + "reservations/" + reservationIdToDelete);
   }
 
   /* DON'T MODIFY ANY METHODS BELOW */

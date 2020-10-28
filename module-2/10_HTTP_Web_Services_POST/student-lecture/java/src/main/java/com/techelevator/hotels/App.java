@@ -38,6 +38,7 @@ public class App {
                 }
             } else if(menuSelection == 3) {
                 // Create new reservation for a given hotel
+            	
                 String newReservationString = consoleService.promptForReservationData();
                 Reservation reservation = hotelService.addReservation(newReservationString);
                 // if unsuccessful
