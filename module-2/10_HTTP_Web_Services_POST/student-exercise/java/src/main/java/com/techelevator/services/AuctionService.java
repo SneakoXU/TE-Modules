@@ -69,17 +69,51 @@ public class AuctionService {
 
     public Auction add(String auctionString) {
         // place code here
-        return null;
+    	Auction auction = makeAuction(auctionString);
+    	if(auction == null) {
+    		return null;
+    	}
+    	HttpEntity entity = makeEntity(auction);
+    	try {
+    	auction = restTemplate.postForObject(BASE_URL, entity, Auction.class);
+    	}catch(RestClientResponseException ex) {
+    		console.printError(ex.getRawStatusCode() + " : " + ex.getStatusText());
+    		return null;
+    	}catch(Exception ex) {
+    		return null;
+    	}
+        return auction;
     }
 
     public Auction update(String auctionString) {
         // place code here
-        return null;
+    	
+    	Auction auction = makeAuction(auctionString);
+    	if(auction == null) {
+    		return null;
+    	}
+    	try {
+    	restTemplate.put(BASE_URL + auction.getId(), auction);
+    	}catch(RestClientResponseException ex) {
+    		console.printError(ex.getRawStatusCode() + " : " + ex.getStatusText());
+    		return null;
+    	}catch(Exception ex) {
+    		return null;
+    	}
+        return auction;
     }
 
     public boolean delete(int id) {
     	// place code here
-    	return false; 
+    	boolean result = false;
+    	try{
+    		restTemplate.delete(BASE_URL + "/" + id);
+        	result = true;
+    	}catch (Exception ex) {
+    		result = false;
+    	}
+    	//result = true;
+    	return result;
     }
 
     private HttpEntity<Auction> makeEntity(Auction auction) {

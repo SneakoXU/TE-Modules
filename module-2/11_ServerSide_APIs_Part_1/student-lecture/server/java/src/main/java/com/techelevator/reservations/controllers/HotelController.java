@@ -8,8 +8,10 @@ import com.techelevator.reservations.models.Hotel;
 import com.techelevator.reservations.models.Reservation;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@RestController
 public class HotelController {
 
     private HotelDAO hotelDAO;
@@ -40,5 +42,80 @@ public class HotelController {
     public Hotel get(@PathVariable int id) {
         return hotelDAO.get(id);
     }
+    
+    //List all reservations
+    
+    @RequestMapping(path = "/reservations", method = RequestMethod.GET)
+    public List<Reservation> listReservations(){
+    	return reservationDAO.findAll();
+    }
+    
+    //Get a reservation by the ID value
+    
+    @RequestMapping(path = "/reservations/{id}", method = RequestMethod.GET)
+    public Reservation getReservation(@PathVariable int id) {
+    	
+    	//Reservation result = ;
+    	return reservationDAO.get(id);
+    }
+    
+    //Get a reservation by hotelID
+    
+    @RequestMapping(path="/hotels/{hotelID}/reservations", method = RequestMethod.GET)
+    public List<Reservation> getReservationsByHotel(@PathVariable int hotelID){
+    	
+    	List<Reservation> result = null;
+    	
+    	result = reservationDAO.findByHotel(hotelID);
+    	
+    	return result;
+    }
+    
+    //Create a new reservation
+    
+    @RequestMapping(path="/hotels/{hotelID}/reservations", method = RequestMethod.POST)
+    public Reservation addNewReservation(@RequestBody Reservation newReservation, @PathVariable(required = false) int hotelID) {
+    	
+    	Reservation result = null;
+    	result = reservationDAO.create(newReservation, hotelID);
+    	return result;
+    	
+    }
+    
+    //Filtered list of hotels
+    
+    @RequestMapping(path="/filter", method = RequestMethod.GET)
+    public List<Hotel> filterByCityandState(@RequestParam String state, @RequestParam String city){
+    	List<Hotel> filteredResult = new ArrayList<>();
+    	List<Hotel> hotels = hotelDAO.list();
+    	
+    	for(Hotel hotel : hotels) {
+    		
+    		//if a city is specified, ignore the state
+    		if(city != null) {
+    			if(hotel.getAddress().getCity().toUpperCase().equals(city.toUpperCase())) {
+        			filteredResult.add(hotel);
+        		}
+    		}else {
+    		
+    		//if no city specified, then filter by state
+    		if(hotel.getAddress().getState().toUpperCase().equals(state.toUpperCase())) {
+    			filteredResult.add(hotel);
+    			}
+    		}
+    	}
+    	
+    	
+    	return filteredResult;
+    }
+    
+    @RequestMapping(path="/reservations/{resID}", method = RequestMethod.DELETE)
+    public void deleteReservation(@PathVariable int resID) {
+    	//CALL RESERVATION DAO 
+    	reservationDAO.delete(resID);
+    	
+    }
+    
+    
 
 }
