@@ -23,7 +23,7 @@ public class AuctionController {
     public List<Auction> list(@RequestParam(required = false) String title_like, @RequestParam(required=false) Double currentBid_lte){
     	
     	List<Auction> auction = dao.list();
-    	//currentBid_lte = 0;
+    	
     	
     	if(title_like != null && currentBid_lte != null) {
     		auction = dao.searchByTitleAndPrice(title_like, currentBid_lte);

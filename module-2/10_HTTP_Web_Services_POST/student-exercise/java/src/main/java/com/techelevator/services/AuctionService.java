@@ -92,8 +92,9 @@ public class AuctionService {
     	if(auction == null) {
     		return null;
     	}
+    	HttpEntity entity = makeEntity(auction);
     	try {
-    	restTemplate.put(BASE_URL + auction.getId(), auction);
+    	restTemplate.put(BASE_URL + "/" + auction.getId(), entity);
     	}catch(RestClientResponseException ex) {
     		console.printError(ex.getRawStatusCode() + " : " + ex.getStatusText());
     		return null;
