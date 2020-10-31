@@ -50,7 +50,7 @@ public class AuctionValidationTest {
         assertEquals(violations.size(), 1);
 
         ConstraintViolation<Auction> violation = violations.iterator().next();
-        assertEquals("The field `title` should not be blank.", violation.getMessage());
+        assertEquals("The field title should not be blank.", violation.getMessage());
         assertEquals("title", violation.getPropertyPath().toString());
     }
 
@@ -61,7 +61,7 @@ public class AuctionValidationTest {
         assertEquals(violations.size(), 1);
 
         ConstraintViolation<Auction> violation = violations.iterator().next();
-        assertEquals("The field `description` should not be blank.", violation.getMessage());
+        assertEquals("The field description should not be blank.", violation.getMessage());
         assertEquals("description", violation.getPropertyPath().toString());
     }
 
@@ -72,7 +72,7 @@ public class AuctionValidationTest {
         assertEquals(violations.size(), 1);
 
         ConstraintViolation<Auction> violation = violations.iterator().next();
-        assertEquals("The field `user` should not be blank.", violation.getMessage());
+        assertEquals("The field user should not be blank.", violation.getMessage());
         assertEquals("user", violation.getPropertyPath().toString());
     }
 
@@ -83,7 +83,7 @@ public class AuctionValidationTest {
         assertEquals(violations.size(), 1);
 
         ConstraintViolation<Auction> violation = violations.iterator().next();
-        assertEquals("The field `current bid` should be greater than 0.", violation.getMessage());
+        assertEquals("The field current bid should be greater than 0.", violation.getMessage());
         assertEquals("currentBid", violation.getPropertyPath().toString());
     }
 
@@ -97,7 +97,7 @@ public class AuctionValidationTest {
         assertEquals(violations.size(), 1);
 
         ConstraintViolation<Auction> violation = violations.iterator().next();
-        assertEquals("The field `current bid` should be greater than 0.", violation.getMessage());
+        assertEquals("The field current bid should be greater than 0.", violation.getMessage());
         assertEquals("currentBid", violation.getPropertyPath().toString());
     }
 

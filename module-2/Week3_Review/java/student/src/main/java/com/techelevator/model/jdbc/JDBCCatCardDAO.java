@@ -49,6 +49,18 @@ public class JDBCCatCardDAO implements CatCardDAO {
 
 		return card;
 	}
+	
+	public long getRandomId() {
+		long randNum = 0;
+		String minSql = "SELECT MAX(id) FROM catcards";
+		String maxSql = "SELECT MIN(id) FROM catcards";
+		SqlRowSet minResult = jdbcTemplate.queryForRowSet(minSql);
+		SqlRowSet maxResult = jdbcTemplate.queryForRowSet(maxSql);
+		
+		
+		
+		return randNum;
+	}
 
 	@Override
 	public boolean update(long cardId, CatCard changedCard) {
