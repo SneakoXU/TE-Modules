@@ -51,7 +51,7 @@ public class CatController {
     }
     
     @RequestMapping(path= "/{id}", method = RequestMethod.GET)
-    public CatCard get(@PathVariable long id) throws CatCardNotFoundException {
+    public CatCard get(@Valid @PathVariable long id) throws CatCardNotFoundException {
     	return catCardDao.get(id);
     }
    
@@ -82,23 +82,25 @@ public class CatController {
 
     }
     
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path="", method = RequestMethod.POST)
-    public boolean save(@RequestBody CatCard catCard) {
+    public boolean save(@Valid @RequestBody CatCard catCard) {
     	
     	return catCardDao.save(catCard);
     	
     }
     
+    
     @RequestMapping(path="", method = RequestMethod.PUT)
-    public boolean update(@RequestBody CatCard catCard)
+    public boolean update(@Valid @RequestBody CatCard catCard)
     {
     	return catCardDao.update(catCard.catCardId, catCard);
 	}
     
     
-    
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path="/{id}", method = RequestMethod.DELETE)
-    public void delete (@PathVariable long id){
+    public void delete (@Valid @PathVariable long id){
     	catCardDao.delete(id);
 	}
     
