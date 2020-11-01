@@ -92,14 +92,14 @@ public class CatController {
     @RequestMapping(path="", method = RequestMethod.PUT)
     public boolean update(@RequestBody CatCard catCard)
     {
-    	return catCardDao.update(catCard.catCardId, catCard);// TODO Auto-generated constructor stub
+    	return catCardDao.update(catCard.catCardId, catCard);
 	}
     
     
     
-    @RequestMapping(path="", method = RequestMethod.DELETE)
-    public void delete (@RequestBody CatCard catCard){
-    	catCardDao.delete(catCard.getCatCardId());
+    @RequestMapping(path="/{id}", method = RequestMethod.DELETE)
+    public void delete (@PathVariable long id){
+    	catCardDao.delete(id);
 	}
     
 
