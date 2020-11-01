@@ -7,6 +7,7 @@ import com.techelevator.model.CatFact;
 import com.techelevator.model.CatPic;
 import com.techelevator.services.CatFactService;
 import com.techelevator.services.CatPicService;
+import com.techelevator.services.RestCatFactService;
 import com.techelevator.services.RestCatPicService;
 
 import org.springframework.http.HttpStatus;
@@ -25,8 +26,12 @@ public class CatController {
     private CatCardDAO catCardDao;
     private CatFactService catFactService;
     private CatPicService catPicService;
+//    private CatFact catFact;
+//    private CatPic catPic;
+//    private RestCatPicService restPic = new RestCatPicService();
+  //  private RestCatFactService restFact = new RestCatFactService();
 
-    private RestCatPicService restCat;
+    //private RestCatPicService restCat;
     public CatController(CatCardDAO catCardDao, CatFactService catFactService, CatPicService catPicService) {
         this.catCardDao = catCardDao;
         this.catFactService = catFactService;
@@ -51,9 +56,51 @@ public class CatController {
     }
    
     @RequestMapping(path="/random", method = RequestMethod.GET)
-    public CatCard getRandom() {
-    	return catCardDao.get(new Random().nextLong(catCardDao.list()));
+    public CatCard random() {
+//    	String catFact = restFact.getFact().toString();
+    	CatCard catCard = new CatCard();
+//    	catCard.setCatFact(catFact);
+//    	
+//    	String catPic = restPic.getPic().toString();
+//    	catCard.setImgUrl(catPic);
+//		return catCardDao.save(catCard);
+//    	CatCard catCard = new CatCard();
+//    	String catFactStr = restFact.getFact().toString();
+//    	catCard.setCatFact(catFactStr);
+//    	
+//    	String catPicURL = restPic.getPic().toString();
+//    	catCard.setImgUrl(catPicURL);
+//    	String catFactStr = catFactService.getFact().toString();
+    	
+    	catCard.setImgUrl(catPicService.getPic().getFile());
+    	catCard.setCatFact(catFactService.getFact().getText());
+    	return catCard;
+//    	return catCardDao.getRandom(catPicService, catFactService);
+    	
+ //   	return catCardDao.get(catCard.getCatCardId());
+//    	catCardDao.get(catFactService.getFact());
+
+    }
+    
+    @RequestMapping(path="", method = RequestMethod.POST)
+    public boolean save(@RequestBody CatCard catCard) {
+    	
+    	return catCardDao.save(catCard);
     	
     }
+    
+    @RequestMapping(path="", method = RequestMethod.PUT)
+    public boolean update(@RequestBody CatCard catCard)
+    {
+    	return catCardDao.update(catCard.catCardId, catCard);// TODO Auto-generated constructor stub
+	}
+    
+    
+    
+    @RequestMapping(path="", method = RequestMethod.DELETE)
+    public void delete (@RequestBody CatCard catCard){
+    	catCardDao.delete(catCard.getCatCardId());
+	}
+    
 
 }

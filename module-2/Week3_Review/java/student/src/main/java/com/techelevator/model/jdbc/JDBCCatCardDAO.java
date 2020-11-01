@@ -3,11 +3,17 @@ package com.techelevator.model.jdbc;
 import com.techelevator.model.CatCard;
 import com.techelevator.model.CatCardDAO;
 import com.techelevator.model.CatCardNotFoundException;
+import com.techelevator.model.CatFact;
+import com.techelevator.model.CatPic;
+import com.techelevator.services.CatFactService;
+import com.techelevator.services.CatPicService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+//import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +21,7 @@ import java.util.List;
 @Component
 public class JDBCCatCardDAO implements CatCardDAO {
 
+	//private BasicDataSource catDataSource;
 	private JdbcTemplate jdbcTemplate;
 	private Logger log = LoggerFactory.getLogger(getClass());
 
@@ -50,16 +57,26 @@ public class JDBCCatCardDAO implements CatCardDAO {
 		return card;
 	}
 	
-	public long getRandomId() {
-		long randNum = 0;
-		String minSql = "SELECT MAX(id) FROM catcards";
-		String maxSql = "SELECT MIN(id) FROM catcards";
-		SqlRowSet minResult = jdbcTemplate.queryForRowSet(minSql);
-		SqlRowSet maxResult = jdbcTemplate.queryForRowSet(maxSql);
+	@SuppressWarnings("null")
+	@Override
+	public CatCard getRandom(CatPicService catPicService, CatFactService catFactService) {
+		//String sql = "SELECT img_url, fact FROM catcards WHERE img_url = ? AND fact = ?";
+		CatCard card = null;
+		//CatFact catFact = new CatFact();
 		
+		//CatPic catPic = new CatPic();
+		//SqlRowSet result = jdbcTemplate.queryForRowSet(sql, catPic.getFile(), catFact.getText());
+		//if(result != null) {
+			//card = mapRowToCard(result);
+		//}else {
+		//	throw new CatCardNotFoundException();
+		//}
+		//catFact.toString();
+		card.setCatFact(catFactService.toString());
+		card.setImgUrl(catPicService.toString());
 		
-		
-		return randNum;
+
+		return card;
 	}
 
 	@Override
