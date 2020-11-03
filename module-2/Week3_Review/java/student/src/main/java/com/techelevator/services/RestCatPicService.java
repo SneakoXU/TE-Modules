@@ -13,7 +13,7 @@ public class RestCatPicService implements CatPicService {
 	public RestTemplate restTemplate = new RestTemplate();
 	
 	public RestCatPicService() {
-		//getPic();
+		
 		
 	}
 

@@ -35,9 +35,22 @@ public class HotelService {
       throw new HotelServiceException(INVALID_RESERVATION_MSG);
     }
 
-    // TODO: Fix Me
-    throw new HotelServiceException("NOT IMPLEMENTED");
+    try {
+    	reservation = restTemplate.postForObject(BASE_URL + "hotels/" + reservation.getHotelID() + "/reservations", makeReservationEntity(reservation), Reservation.class);
+    	
+    }
+    catch(RestClientResponseException rcr) {
+    	throw new HotelServiceException(rcr.getMessage() + ": " + rcr.getRawStatusCode() + ": " + rcr.getResponseBodyAsString());
+    }
+    catch(Exception ex) {
+    	throw new HotelServiceException("IT DIDN'T WORK");
+    }
+ 
+    return reservation;
   }
+  
+
+
 
   /**
    * Updates an existing reservation by replacing the old one with a new

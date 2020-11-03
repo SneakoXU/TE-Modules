@@ -14,11 +14,7 @@ public interface CatCardDAO {
 	boolean save(CatCard cardToSave);
 
 	boolean update(long id, CatCard card);
-	
-	//CatCard getRandom(String catFactStr, String imgUrl);
 
 	boolean delete(long id);
-
-	CatCard getRandom(CatPicService catPicService, CatFactService catFactService);
 
 }

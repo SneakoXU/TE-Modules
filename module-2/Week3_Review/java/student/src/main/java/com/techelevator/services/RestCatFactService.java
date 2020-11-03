@@ -9,12 +9,11 @@ import com.techelevator.model.CatFact;
 public class RestCatFactService implements CatFactService {
 	
 	private final String BASE_URL = "https://cat-fact.herokuapp.com/facts/random";
-	//private final String BASE_URL;
+
 	public RestTemplate restTemplate = new RestTemplate();
 	
 	public RestCatFactService() {
-		//BASE_URL = url;
-		//getFact();
+		
 		
 	}
 	

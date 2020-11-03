@@ -21,7 +21,6 @@ import java.util.List;
 @Component
 public class JDBCCatCardDAO implements CatCardDAO {
 
-	//private BasicDataSource catDataSource;
 	private JdbcTemplate jdbcTemplate;
 	private Logger log = LoggerFactory.getLogger(getClass());
 
@@ -56,28 +55,6 @@ public class JDBCCatCardDAO implements CatCardDAO {
 
 		return card;
 	}
-	
-	@SuppressWarnings("null")
-	@Override
-	public CatCard getRandom(CatPicService catPicService, CatFactService catFactService) {
-		//String sql = "SELECT img_url, fact FROM catcards WHERE img_url = ? AND fact = ?";
-		CatCard card = null;
-		//CatFact catFact = new CatFact();
-		
-		//CatPic catPic = new CatPic();
-		//SqlRowSet result = jdbcTemplate.queryForRowSet(sql, catPic.getFile(), catFact.getText());
-		//if(result != null) {
-			//card = mapRowToCard(result);
-		//}else {
-		//	throw new CatCardNotFoundException();
-		//}
-		//catFact.toString();
-		card.setCatFact(catFactService.toString());
-		card.setImgUrl(catPicService.toString());
-		
-
-		return card;
-	}
 
 	@Override
 	public boolean update(long cardId, CatCard changedCard) {
@@ -108,6 +85,6 @@ public class JDBCCatCardDAO implements CatCardDAO {
 		cc.setImgUrl(rs.getString("img_url"));
 		cc.setCaption(rs.getString("caption"));
 		return cc;
-	};
+	}
 
 }
