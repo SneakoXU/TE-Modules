@@ -1,0 +1,162 @@
+html{
+    height: 100%;
+    font-size: 16px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    /* Set the default font */
+    font-family: "Raleway", sans-serif;
+
+    /* Set the gradient */
+    background-image: linear-gradient(to bottom, #858c90, #bbb);
+
+    /* Lock the background in place */
+    background-attachment: fixed;
+
+    /* Do not repeat the background */
+    background-repeat: no-repeat;
+
+    /* Do not wrap */
+    white-space: nowrap;
+}
+
+div.trello-list{
+    /* Create multi-column layout */
+    display: inline-block;
+
+    /* Align the lists to the top of the row */
+    vertical-align: top;
+
+    /* Set fixed width */
+    width: 300px;
+
+    /* Set background color */
+    background-color: #ddd;
+
+    /* Round corners of the list */
+    border-radius: 3px 5px;
+}
+
+/* targeting only h2s in divs with the class trello-list */
+div.trello-list h2{
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 8px;
+}
+
+/* Make the OL container as narrow as possible, to take up less space */
+div.trello-list ol{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+
+div.trello-list li{
+    list-style: none;
+    background-color: rgb(255,255,255);
+    padding: 8px;
+    margin-bottom: 10px;
+
+    font-size: .9rem;
+    font-weight: bold;
+    border-radius: 2px;
+    
+    white-space: normal;
+}
+
+div.trello-list li:hover{
+    background-color: blanchedalmond;
+    color: darkblue;
+}
+
+div.trello-list li:last-child{
+    margin-bottom: 0px;
+}
+
+div.trello-list a{
+    color: #888;
+    display: block;
+    text-decoration: none;
+    padding: 8px 0px 8px 8px;
+    font-size: .8rem;
+}
+
+div.trello-list a:hover{
+    color: blue;
+}
+
+header > h1, header > p{
+    display: inline-block;
+    color: lightgray;
+
+    height: 20px;
+    padding-right: 20px;
+
+    vertical-align: middle;
+
+    border-right: 2px solid lightgray;
+}
+
+header > h1{
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+header > p{
+    font-size: .9rem;
+    padding-left: 1px;
+}
+
+/* Formats the labels box to incorporate the color tabs */
+.labels span{
+    display: inline-block;
+    vertical-align: top;
+    width: 40px;
+    height: 8px;
+    border-radius: 4px;
+}
+
+.label.individual{
+    background-color: forestgreen;
+}
+
+.label.pair{
+    background-color: teal;
+}
+
+.label.pathway{
+    background-color: red;
+}
+
+.label.general{
+    background-color: orange;
+}
+
+header{
+    position: fixed;
+
+    top: 0px;
+
+    height: 50px;
+}
+
+main{
+    margin-top: 50px;
+}
+
+body::-webkit-scrollbar{
+    width: 15px;
+}
+
+body::-webkit-scrollbar-track{
+    background-color: cadetblue;
+}
+
+body::-webkit-scrollbar-button{
+    color: aquamarine;
+}

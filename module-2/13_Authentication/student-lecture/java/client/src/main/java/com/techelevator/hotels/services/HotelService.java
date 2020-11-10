@@ -6,6 +6,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
@@ -145,6 +146,8 @@ public class HotelService {
   public Reservation[] listReservationsByHotel(int hotelId) throws HotelServiceException {
     Reservation[] reservations = null;
     try {
+    	ResponseEntity<Reservation[]> entity = restTemplate.getForEntity(BASE_URL, Reservation[].class);
+    	
       reservations = restTemplate.exchange(BASE_URL + "hotels/" + hotelId + "/reservations", HttpMethod.GET,
           makeAuthEntity(), Reservation[].class).getBody();
     } catch (RestClientResponseException ex) {
