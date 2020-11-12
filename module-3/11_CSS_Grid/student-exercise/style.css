@@ -116,3 +116,61 @@ header img {
     grid-column-gap: 50px;
 }
 
+@media screen and (max-width: 1024px){
+    #main-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        "headline headline"
+        "quote picture"
+        "quote contact"
+        "profile profile"
+        "experience-grid experience-grid"
+        ;
+        grid-row-gap: 20px;
+        grid-column-gap: 35px;
+        align-items: center;
+    }
+
+    #experience-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        "code web"
+        "database design"
+        ;
+        grid-row-gap: 20px;
+        grid-column-gap: 20px;
+    }
+}
+
+@media screen and (max-width: 450px){
+    #main-grid{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "headline"
+        "picture"
+        "contact"
+        "quote"
+        "profile"
+        "experience-grid"
+        ;
+        grid-row-gap: 20px;
+        grid-column-gap: 35px;
+        align-items: center;
+    }
+
+    #experience-grid{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "code"
+        "web"
+        "database" 
+        "design"
+        ;
+        grid-row-gap: 20px;
+        grid-column-gap: 20px;
+    }
+}
