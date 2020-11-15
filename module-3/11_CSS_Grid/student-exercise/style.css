@@ -108,7 +108,7 @@ header img {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-    "code code"
+    "code code "
     "database database"
     "web design"
     ;

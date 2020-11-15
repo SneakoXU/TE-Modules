@@ -6,6 +6,7 @@ body {
 header {
   background-color: #F0F0F0;
   padding: 20px;
+  width: 100%
 }
 
 .logo {
@@ -42,4 +43,14 @@ li a:hover {
 
 .my-account img {
   width: 32px;
+}
+
+body, header, .logo, nav, ul, li, a, div.spacer, img{
+  display: flex;
+  flex-direction: row;
+}
+
+div.spacer{
+  flex-grow: 2;
+  flex-basis: auto;
 }

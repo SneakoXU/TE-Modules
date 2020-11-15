@@ -1,15 +1,19 @@
 body {
   margin: 20px;
-  padding: 0
+  padding: 0;
 }
 
 header {
   background-color: #F0F0F0;
   padding: 20px;
+  width: 100%;
+
+ 
 }
 
 .logo {
   width: 140px;
+  
 }
 
 ul {
@@ -37,3 +41,18 @@ a:hover {
   color: #00AFEF;
   text-decoration: underline;
 }
+
+body, header, .logo, nav, ul, li, a{
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+
+
+
+
+
+
