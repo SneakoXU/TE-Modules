@@ -10,8 +10,27 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const DAYS_PER_WEEK = 7;
+  console.log(`There are ${DAYS_PER_WEEK} days in the week.`);
   // Declares a variable those value can be changed
+  let daysInMonth = 30;
+  console.log(`There are ${daysInMonth} days in the month this month.`);
+
+
+  //NOPE! Cannot reassign a constant
+  /* DAYS_PER_WEEK = 5;
+  console.log(`There are ${DAYS_PER_WEEK} days in the week.`);
+  */
+
   // Declares a variable that will always be an array
+  const weekdays = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday'
+  ];
+  console.table(weekdays);
 }
 
 /**
@@ -23,6 +42,24 @@ function variables() {
 function printParameters(param1, param2) {
   console.log(`The value of param1 is ${param1}`);
   console.log(`The value of param2 is ${param2}`);
+
+  console.log(`param 1 plus param 2 is ${param1 + param2}`);
+
+  //JavaScript operators are only predictable in the context of their parameter types
+  let weekdays = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday'
+  ];
+
+  let newValues = [ 'Saturday', 'Sunday' ];
+  
+  
+  weekdays.push(newValues);
+  
+  console.table(weekdays);
 }
 
 /**
@@ -70,8 +107,11 @@ function objects() {
       "Milton Waddams",
       "Samir Nagheenanajar",
       "Michael Bolton"
-    ]
+    ] 
   };
+
+  //out to console as table
+  console.table(person);
 
   // Log the object
 
