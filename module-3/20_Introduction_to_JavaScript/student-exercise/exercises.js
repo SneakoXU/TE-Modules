@@ -266,5 +266,4 @@ function createObject() {
       age: 32,
     }
         return person;
-
     }
