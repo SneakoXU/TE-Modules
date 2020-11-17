@@ -81,15 +81,24 @@
 		oddOnly([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) → [1, 3, 5, 7, 9, 11];
 		oddOnly([2, 4, 8, 32, 256]); → []
 */
-		function oddOnly(x){
-			let numbers = [];
-			for(let i=0; i< x.length; i++){
-				if(x[i]%2 != 0){
-					numbers.push(x[i]);	
+		// function oddOnly(x){
+		// 	let numbers = [];
+		// 	for(let i=0; i< x.length; i++){
+		// 		if(x[i]%2 != 0){
+		// 			numbers.push(x[i]);	
+		// 		}
+		// 	}
+		// 	return numbers;
+		// }
+		function oddOnly(arrayOfNums) {
+			let numbers = arrayOfNums.filter(
+				(element) => {
+					return element % 2 == 1;
 				}
-			}
+			);
 			return numbers;
 		}
+		
 	
 
 /*
@@ -170,17 +179,27 @@ or false otherwise.
 	filterEvens([100, 8, 21, 24, 62, 9, 7]) → [100, 8, 24, 62]
 */
 
-		function filterEvens(x){
-			let numbers = [];
-			for(let i=0; i< x.length; i++){
-				if(x[i]%2 == 0){
-					numbers.push(x[i]);	
-				}else if(x == []){
-					return [];
+		// function filterEvens(x){
+		// 	let numbers = [];
+		// 	for(let i=0; i< x.length; i++){
+		// 		if(x[i]%2 == 0){
+		// 			numbers.push(x[i]);	
+		// 		}else if(x == []){
+		// 			return [];
+		// 		}
+		// 	}
+		// 	return numbers;
+		// }
+
+		function filterEvens(arrayOfNums) {
+			let numbers = arrayOfNums.filter(
+				(element) => {
+					return element % 2 == 0;
 				}
-			}
+			);
 			return numbers;
 		}
+		
 
 
 
