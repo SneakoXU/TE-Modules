@@ -28,6 +28,10 @@ function printToConsole(value) {
  * @param {number} secondParameter the second parameter to multiply
  */
 
+ function multiplyTogether(firstParameter, secondParameter){
+   return firstParameter * secondParameter;
+ }
+
 /**
  * This version makes sure that no parameters are ever missing. If
  * someone calls this function without parameters, we default the
@@ -39,6 +43,9 @@ function printToConsole(value) {
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
 
+ function multiplyNoUndefined(firstParameter=0, secondParameter=0){
+   return firstParameter * secondParameter;
+ }
 
  
 /**
@@ -92,6 +99,33 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
   return description + listOfQuirks.join(separator);
 }
 
+function forEachDemo(){
+  let numbers = [0,1,2,3,4];
+
+  numbers.forEach((num) => {
+      console.log(num * 2);
+  }
+  );
+}
+
+function mapDemo(){
+  let numbers = [0,1,2,3,4];
+
+   let newNumbers = numbers.map(
+     (num) => {
+       return num * 3;
+     }
+   )
+
+   return newNumbers;
+}
+
+
+
+
+
+
+
 /**
  * Takes an array and, using the power of anonymous functions, generates
  * their sum.
@@ -99,9 +133,24 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @param {number[]} numbersToSum numbers to add up
  * @returns {number} sum of all the numbers
  */
-function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+function sumAllNumbers1(numbersToSum) {
+  return numbersToSum.reduce(reducer);
+
 }
+
+function reducer(sum, number){
+  return sum + number;
+}
+
+let variable = (sum, number) => { return sum + number;};
+
+function sumAllNumbers2(numbersToSum) {
+  return numbersToSum.reduce(variable);
+
+}
+
+
+
 
 /**
  * Takes an array and returns a new array of only numbers that are
@@ -111,4 +160,15 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+
+ 
+function allDivisibleByThree(numbersToFilter) {
+
+  return numbersToFilter.filter ( (num) =>{
+    
+    return num %3 == 0;
+
+  }
+  );
+
+}

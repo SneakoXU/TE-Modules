@@ -6,6 +6,10 @@
  * @returns {boolean} true
  */
 
+ function turnOn(){
+   return true;
+ }
+
 /**
  * Create a function called returnsName.
  *
@@ -14,6 +18,10 @@
  * @returns {string} your name
  */
 
+ function returnsName(){
+   return "Niko Suntay";
+ }
+
 /**
  * Create a function called returnGivenParameter that takes a
  * single parameter and then returns it.
@@ -21,6 +29,10 @@
  * @param {any} thing any value
  * @returns {any} the parameter that we were given
  */
+
+ function returnGivenParameter(param1){
+   return param1;
+ }
 
 /**
  * Now create a function called takeOptionalParameter
@@ -31,6 +43,10 @@
  * @param {any} [thing=0] any value
  * @returns {any} the parameter given, or 0 if none is given
  */
+
+ function takeOptionalParameter(thing=0){
+   return thing;
+ }
 
 /**
  * Write an anonymous function in the filter that will
@@ -45,7 +61,9 @@
  */
 function filterArrayToOnlySingleDigitNumbers(arrayToFilter) {
   return arrayToFilter.filter(
-    // WRITE CODE HERE
+    (element) =>{
+      return element < 10 && element > -10;
+    }
   );
 }
 
@@ -61,7 +79,9 @@ function filterArrayToOnlySingleDigitNumbers(arrayToFilter) {
  */
 function mapArrayToDoubleAllNumbers(arrayToDouble) {
   return arrayToDouble.map(
-    // WRITE CODE HERE
+    (element) =>{
+      return element *2;
+    }
   );
 }
 
@@ -78,7 +98,9 @@ function mapArrayToDoubleAllNumbers(arrayToDouble) {
  */
 function reduceArrayToFindProduct(arrayToMultiply) {
   return arrayToMultiply.reduce(
-    // WRITE CODE HERE
+  (currentResult, element) => {
+    return currentResult * element;
+  }
   );
 }
 
@@ -91,7 +113,9 @@ function reduceArrayToFindProduct(arrayToMultiply) {
  */
 function filterStringArrayForSon(arrayToFilter) {
   return arrayToFilter.filter(
-    // WRITE CODE HERE
+    (element) => {
+      return element.includes('son');
+    }
   );
 }
 
@@ -104,7 +128,9 @@ function filterStringArrayForSon(arrayToFilter) {
  */
 function makeNamesAllCaps(arrayToCapitalize) {
   return arrayToCapitalize.map(
-    // WRITE CODE HERE
+    (element) => {
+      return element.toUpperCase();
+    }
   );
 }
 
