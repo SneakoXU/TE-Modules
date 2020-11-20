@@ -168,6 +168,33 @@ function useParameterToFilterArray(filterFunction) {
  *
  * The function returns 48. To do this, you will use two nested `reduce`
  * calls with two anonymous functions.
+ * 
  *
  * Read the tests to verify you have the correct behavior.
  */
+
+//  function getSumOfSubArrayValues(arrayOfArrays=0){
+//      let sumOfArray = arrayOfArrays.reduce(
+//          (sum, element) => {
+//              return sum + element;
+//          }
+//      );
+//      return sumOfArray.reduce(
+//         (sum, element) => {
+//             return sum + element;
+//         }
+//     );
+
+//  }
+
+ function getSumOfSubArrayValues(arrayOfArrays=0){ 
+    let arraySum = arrayOfArrays.reduce(
+        (sum, element) => {
+            let total = element.reduce( (totalOfNest, nestElement) => {
+                totalOfNest + nestElement
+            });
+            sum + total;
+           });
+    let numSum = Number.parseInt(arraySum);
+    return numSum;
+}
