@@ -188,13 +188,12 @@ function useParameterToFilterArray(filterFunction) {
 //  }
 
  function getSumOfSubArrayValues(arrayOfArrays=0){ 
-    let arraySum = arrayOfArrays.reduce(
+    return arrayOfArrays.reduce(
         (sum, element) => {
             let total = element.reduce( (totalOfNest, nestElement) => {
-                totalOfNest + nestElement
+               return totalOfNest + nestElement
             });
-            sum + total;
+           sum + total;
            });
-    let numSum = Number.parseInt(arraySum);
-    return numSum;
+ 
 }

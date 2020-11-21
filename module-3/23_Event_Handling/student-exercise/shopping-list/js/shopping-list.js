@@ -37,5 +37,65 @@ function displayGroceries() {
   });
 }
 
-setPageTitle();
-displayGroceries();
+document.addEventListener("DOMContentLoaded", () => {
+
+  setPageTitle();
+  displayGroceries();
+
+  const items = document.querySelectorAll('li');
+  items.forEach( (item) => {
+    item.addEventListener('click', () => {
+      if(!item.classList.contains('completed')){
+        item.classList.add('completed');
+        item.querySelector('i').classList.add('completed');
+      }
+    })
+    item.addEventListener('dblclick', () => {
+      if(item.classList.contains('completed')){
+        item.classList.remove('completed');
+        item.querySelector('i').classList.remove('completed');
+      }
+    })
+    const toggleAll = document.getElementById('toggleAll');
+  
+    
+      toggleAll.addEventListener('click', () => {
+        allItemsIncomplete = false;
+        items.forEach( (item) => {
+          
+           item.classList.add('completed');
+           item.querySelector('i').classList.add('completed');
+           toggleAll.innerText = 'Mark All Incomplete';
+        
+          
+        })
+        
+       })
+      
+    
+      toggleAll.addEventListener( 'dblclick', () => {
+        allItemsIncomplete = true;
+        items.forEach( (item) => {
+          if(item.classList.contains('completed')){
+            item.classList.remove('completed');
+            item.querySelector('i').classList.remove('completed');
+            toggleAll.innerText = 'Mark All Complete';
+           
+          }
+         
+          
+        })
+
+      })
+     
+    
+    
+
+ 
+
+    
+  })
+ 
+
+})
+
