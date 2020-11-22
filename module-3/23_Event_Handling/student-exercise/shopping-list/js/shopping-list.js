@@ -56,46 +56,32 @@ document.addEventListener("DOMContentLoaded", () => {
         item.querySelector('i').classList.remove('completed');
       }
     })
+  })
     const toggleAll = document.getElementById('toggleAll');
   
     
       toggleAll.addEventListener('click', () => {
-        allItemsIncomplete = false;
         items.forEach( (item) => {
-          
-           item.classList.add('completed');
-           item.querySelector('i').classList.add('completed');
-           toggleAll.innerText = 'Mark All Incomplete';
-        
-          
-        })
+          if(allItemsIncomplete){
+            item.classList.add('completed');
+            toggleAll.innerText = 'Mark All Incomplete';
+            item.querySelector('i').classList.add('completed');
+            
+
+          }else{
+            item.classList.remove('completed');
+            toggleAll.innerText = 'Mark All Complete';
+            item.querySelector('i').classList.remove('completed');
+            
+
+          }
         
        })
+       allItemsIncomplete = !allItemsIncomplete;
       
-    
-      toggleAll.addEventListener( 'dblclick', () => {
-        allItemsIncomplete = true;
-        items.forEach( (item) => {
-          if(item.classList.contains('completed')){
-            item.classList.remove('completed');
-            item.querySelector('i').classList.remove('completed');
-            toggleAll.innerText = 'Mark All Complete';
-           
-          }
-         
-          
-        })
 
       })
-     
-    
-    
-
- 
-
-    
-  })
- 
 
 })
+
 

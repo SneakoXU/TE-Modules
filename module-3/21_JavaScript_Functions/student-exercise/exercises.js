@@ -187,13 +187,13 @@ function useParameterToFilterArray(filterFunction) {
 
 //  }
 
- function getSumOfSubArrayValues(arrayOfArrays=0){ 
+ function getSumOfSubArrayValues(arrayOfArrays=[]){ 
     return arrayOfArrays.reduce(
         (sum, element) => {
-            let total = element.reduce( (totalOfNest, nestElement) => {
+            return ( sum + element.reduce( (totalOfNest, nestElement) => {
                return totalOfNest + nestElement
-            });
-           sum + total;
-           });
+            }, 0)
+    );
+           }, 0);
  
 }

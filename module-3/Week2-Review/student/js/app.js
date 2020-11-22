@@ -1,3 +1,5 @@
+
+
 let leftOperand = 0;
 let rightOperand = 0;
 let correctAnswer = 0;

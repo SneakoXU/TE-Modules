@@ -82,24 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // HINT: use its id #display to get a reference to it
 
   display = document.getElementById('display');
- 
-
-  // const calcKeys = document.querySelector('.calculator-keys');
-  // calcKeys.addEventListener('click', (ev) => {
-  //   const target = ev.target;
-    
-  //   if(target.classList.contains('number')){
-  //     console.log('num', target.value)
-  //     clickNumber(ev);
-  //   }
-      
-
-    
-  
-
-
-
-  // })
 
   // get a reference to all of the numbers
     const numbers = document.querySelectorAll('.number');
@@ -108,12 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // add a click event listener to each number to call the function clickNumber
   numbers.forEach( (number) => {
     number.addEventListener( 'click', clickNumber )
-    //(ev) => {
-    //  const target = ev.target;
-    //  console.log('num', target.value);
-    //  display.value = numbers.value;
-    //  clickNumber(ev);
-    // });
   })
   
 
