@@ -36,6 +36,39 @@
       </div>
     </div>
 
+    <!-- ADD A REVIEW INPUT FORM -->
+
+    <form v-on:submit.prevent="addNewReview" v-if="showForm === true">
+      <div class="form-element">
+        <label for="reviewer">Name:</label>
+        <input id="reviewer" type="text" v-model="newReview.reviewer">
+      </div>
+      
+      <div class ="form-element">
+        <label for="title">Review Title:</label>
+        <input id="title" type="text" v-model="newReview.title">
+      </div>
+      
+      <div class ="form-element">
+        <label for="rating">Star Rating:</label>
+        <select id="rating" v-model="newReview.rating">
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+        </select>    
+      </div>
+      
+      <div class ="form-element">
+        <label for="review">Review:</label>
+        <input id="review" type="text">
+      </div>
+    </form>
+
+    <!----------------------------->
+
+
     <div
       class="review"
       v-bind:class="{ favorited: review.favorited }"
@@ -73,6 +106,7 @@ export default {
       description:
         "Host and plan the perfect cigar party for all of your squirrelly friends.",
       newReview: {},
+      showForm: true,
       reviews: [
         {
           reviewer: "Malcolm Gladwell",
@@ -140,6 +174,11 @@ export default {
       return this.reviews.reduce((currentCount, review) => {
         return currentCount + (review.rating === 5);
       }, 0);
+    }
+  },
+  methods: {
+    addNewReview(){
+      this.reviews.unshift(this.newReview);
     }
   }
 };
