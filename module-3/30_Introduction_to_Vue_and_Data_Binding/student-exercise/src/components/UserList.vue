@@ -23,16 +23,16 @@
           </select>
         </td>
       </tr>
-      <tr v-for="user in users" v-bind:key="user.id">
-        <td><p>{{ user.firstName }}</p></td>
+      <tr v-for="user in filteredList" v-bind:key="user.id" v-bind:class="{disabled: user.status === 'Disabled'}">
+        <td>{{ user.firstName }}</td>
       
-        <td><p>{{ user.lastName }}</p></td>
+        <td>{{ user.lastName }}</td>
       
-        <td><p>{{ user.username }}</p></td>
+        <td>{{ user.username }}</td>
        
-        <td><p>{{ user.emailAddress }}</p></td>
+        <td>{{ user.emailAddress }}</td>
       
-        <td><p>{{ user.status }}</p></td>
+        <td>{{ user.status }}</td>
       </tr>
       
     </tbody>
@@ -44,7 +44,7 @@ export default {
   name: 'user-list',
   data() {
     return {
-      
+     
       users: [
         { firstName: 'John', lastName: 'Smith', username: 'jsmith', emailAddress: 'jsmith@gmail.com', status: 'Active' },
         { firstName: 'Anna', lastName: 'Bell', username: 'abell', emailAddress: 'abell@yahoo.com', status: 'Active' },
@@ -54,44 +54,33 @@ export default {
         { firstName: 'Mark', lastName: 'Smith', username: 'msmith', emailAddress: 'msmith@foo.com', status: 'Disabled' }
       ],
 
-      filter: [
-        { firstName: ' ' },
-        { lastName: ' ' },
-        { username: ' ' },
-        { emailAddress: ' ' },
-        { status: ' ' }
-      ]
+      filter: {
+        firstName: '',
+        lastName: '',
+        username: '',
+        emailAddress: '',
+        status: ''
+    }
+
     }
   },
 
   computed:{
-    firstNameFilter(){
+    filteredList(){
       return this.users.filter( (user) => {
-        return user.firstName.includes(this.filter.firstName)
-      });
-    },
-    lastNameFilter(){
-      return this.users.filter( (user) => {
-        return user.lastName.includes(this.filter.lastName)
-      });
-    },
-    usernameFilter(){
-      return this.users.filter( (user) => {
-        return user.username.includes(this.filter.username)
-      });
-    },
-    emailAddressFilter(){
-      return this.users.filter( (user) => {
-        return user.emailAddress.includes(this.filter.emailAddress)
-      });
-    },
-    statusFilter(){
-      return this.users.filter( (user) => {
-        return user.status.includes(this.filter.status)
-      });
-    }
-  }
-}
+        
+        return user.firstName.toLowerCase().includes(this.filter.firstName.toLowerCase())
+        }).filter( (user) => {
+          return user.lastName.toLowerCase().includes(this.filter.lastName.toLowerCase())
+          }).filter( (user) => {
+            return user.username.toLowerCase().includes(this.filter.username.toLowerCase())
+            }).filter( (user) => {
+              return user.emailAddress.toLowerCase().includes(this.filter.emailAddress.toLowerCase())
+              }).filter( (user) => {
+                return user.status.includes(this.filter.status)})
+              }
+            }
+          }
 </script>
 
 <style scoped>
