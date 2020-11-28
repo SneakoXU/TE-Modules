@@ -44,7 +44,7 @@
           v-bind:class="{ disabled: user.status === 'Disabled' }"
         >
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" v-model="selectedUserIDs"/>
+            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" v-model.number="selectedUserIDs"/>
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -63,7 +63,7 @@
     </table>
 
     <div class="all-actions">
-      <button>Enable Users</button>
+      <button v-on:click="enableSelectedUsers()">Enable Users</button>
       <button>Disable Users</button>
       <button>Delete Users</button>
     </div>
@@ -102,9 +102,9 @@ export default {
         text: ''
       },
 
-      selectedUserIDs: [ {
-      }
-      ],
+      selectedUserIDs:  [{
+      }]
+      ,
      
       filter: {
         firstName: "",
@@ -190,7 +190,37 @@ export default {
         this.user.status = 'Disabled';
         //this.button.text = 'Enable';
     }
-    }
+    },
+
+
+
+    enableSelectedUsers(){
+        this.users.forEach( (user) => {
+          if(this.selectedUserIDs.includes(user.id)){
+            user.status = 'Active';
+          }
+        })
+        // this.user = this.users.find( (user) => this.selectedUserIDs.includes(user.id));
+        // this.user.status = 'Active';
+
+        
+        
+        // for(let i=0;i<this.selectedUserIDs.length;i++){
+        //   if(this.users.includes(this.selectedUserIDs[i])){
+        //     this.users.status = 'Active';
+        //   }
+        // }
+        
+
+      //let userIds = parseInt(this.selectedUserIDs);
+      
+      // for(let i=0;i<ids.length;i++){
+        
+
+      //   }
+      }
+     
+    
   },
   computed: {
     filteredList() {
