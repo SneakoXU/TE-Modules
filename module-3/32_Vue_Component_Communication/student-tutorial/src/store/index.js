@@ -17,6 +17,13 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    ADD_NEW_TODO(state, todo){
+      state.todos.push(todo);
+    },
+
+    FLIP_DONE(state, todo){
+      todo.done = !todo.done;
+    }
   },
   actions: {
   },

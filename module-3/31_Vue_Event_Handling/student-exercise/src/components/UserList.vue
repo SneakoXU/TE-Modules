@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" v-bind:checked = "allSelected ==true" v-on:change="selectAll"/>
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -52,10 +52,10 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnEnableDisable" v-on:click="flipStatus(user.id)">
-              <span v-show="user.status==='Active'">Disable</span>
-              <span v-show="user.status==='Disabled'">Enable</span>
-              </button>
+            
+            <!-- NOT SURE HOW TO GET BOTH BUTTON TEXTS IN ONE BUTTON TAG, BUT THIS WAY WORKS WELL STILL -->
+            <button class="btnEnableDisable" v-on:click="flipStatus(user.id)" v-show="user.status==='Active'">Disable</button> 
+            <button class="btnEnableDisable" v-on:click="flipStatus(user.id)" v-show="user.status==='Disabled'">Enable</button>
            <!-- <button class="btnEnableDisable" v-show="user.status==='Disabled'" v-on:click="flipStatus(user.id)">Enable</button> -->
           </td>
         </tr>
@@ -63,9 +63,9 @@
     </table>
 
     <div class="all-actions">
-      <button v-on:click="enableSelectedUsers()">Enable Users</button>
-      <button v-on:click="disableSelectedUsers()">Disable Users</button>
-      <button>Delete Users</button>
+      <button v-show="!actionButtonDisabled" v-on:click="enableSelectedUsers">Enable Users</button>
+      <button v-show="!actionButtonDisabled" v-on:click="disableSelectedUsers">Disable Users</button>
+      <button v-show="!actionButtonDisabled" v-on:click="deleteSelectedUsers">Delete Users</button>
     </div>
 
     <button v-on:click.prevent="showForm = true">Add New User</button>
@@ -102,8 +102,11 @@ export default {
         text: ''
       },
 
-      selectedUserIDs:  [{
-      }]
+      allSelected: false,
+
+      selectedUserIDs:  [
+        
+      ]
       ,
      
       filter: {
@@ -113,15 +116,17 @@ export default {
         emailAddress: "",
         status: ""
       },
-      newUser: [{
+      newUser: 
+        {
         id: null,
         firstName: "",
         lastName: "",
         username: "",
         emailAddress: "",
-        status: "Active"
+        status: 'Active',
+        checked: false
       }
-      ],
+      ,
       users: [
         {
           id: 1,
@@ -129,7 +134,8 @@ export default {
           lastName: "Smith",
           username: "jsmith",
           emailAddress: "jsmith@gmail.com",
-          status: "Active"
+          status: "Active",
+          checked: false
         },
         {
           id: 2,
@@ -137,7 +143,8 @@ export default {
           lastName: "Bell",
           username: "abell",
           emailAddress: "abell@yahoo.com",
-          status: "Active"
+           status: "Active",
+          checked: false
         },
         {
           id: 3,
@@ -145,7 +152,8 @@ export default {
           lastName: "Best",
           username: "gbest",
           emailAddress: "gbest@gmail.com",
-          status: "Disabled"
+          status: "Disabled",
+          checked: false
         },
         {
           id: 4,
@@ -153,7 +161,8 @@ export default {
           lastName: "Carter",
           username: "bcarter",
           emailAddress: "bcarter@gmail.com",
-          status: "Active"
+           status: "Active",
+          checked: false
         },
         {
           id: 5,
@@ -161,7 +170,8 @@ export default {
           lastName: "Jackson",
           username: "kjackson",
           emailAddress: "kjackson@yahoo.com",
-          status: "Active"
+           status: "Active",
+          checked: false
         },
         {
           id: 6,
@@ -169,14 +179,18 @@ export default {
           lastName: "Smith",
           username: "msmith",
           emailAddress: "msmith@foo.com",
-          status: "Disabled"
+          status: "Disabled",
+          checked: false
         }
       ]
     };
   },
   methods: {
     saveUser(){
-      this.users.unshift(this.newUser);
+      this.newUser.id = this.users.length+1;
+      this.newUser.status = 'Active';
+      this.newUser.checked = false;
+      this.users.push(this.newUser);
       this.newUser = {};
       this.showForm = false;
     },
@@ -192,18 +206,18 @@ export default {
     }
     },
 
-
-
     enableSelectedUsers(){
         this.users.forEach( (user) => {
           if(this.selectedUserIDs.includes(user.id)){
             user.status = 'Active';
-          
           }
         })
+          this.selectedUserIDs=!this.selectedUserIDs;
+          this.selectedUserIDs = [];
+          this.allSelected = false;
+      
         // this.user = this.users.find( (user) => this.selectedUserIDs.includes(user.id));
         // this.user.status = 'Active';
-
       },
 
     disableSelectedUsers(){
@@ -213,8 +227,44 @@ export default {
             
           }
         })
+        this.selectedUserIDs=!this.selectedUserIDs;
+         this.selectedUserIDs = [];
+         this.allSelected = false;
      
+    },
+
+    deleteSelectedUsers(){
+     
+      for(let i = this.users.length -1; i>=0; i--){
+        if(this.selectedUserIDs.includes(this.users[i].id)){
+          this.users.splice(i,1);
+          this.selectedUserIDs.splice(i,1);
+        }
+      }
+      this.allSelected = false;
+       
+    },
+
+    selectAll(){
+      //this.selectedUserIDs=[];
+      // this.users.forEach( user => {
+      //   this.selectedUserIDs.push(user);
+      // })
+      if(!this.allSelected){
+        this.users.forEach( user => {
+          this.selectedUserIDs.push(user.id);
+        });
+        this.allSelected = true;
+      }else{
+        this.users.forEach( user => {
+          this.selectedUserIDs.splice(user,1);    
+        });
+        this.allSelected = false;
+      }   
+        
+      
     }
+     
   },
   computed: {
     filteredList() {
@@ -253,8 +303,17 @@ export default {
         );
       }
       return filteredUsers;
-    }
+    },
 
+    actionButtonDisabled(){
+      let result = true;
+      if(this.selectedUserIDs.length < 1){
+        result = true;
+      }else{
+        result = false;
+      }
+      return result;
+    }
 
   }
 };

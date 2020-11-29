@@ -3,7 +3,7 @@
         <h1>My Daily Routine</h1>
         <ul>
             <li v-for="todo in $store.state.todos" v-bind:key="todo.name"  v-bind:class="{ 'todo-completed': todo.done }">
-                <input type="checkbox" v-model="todo.done"/>
+                <input type="checkbox" v-model="todo.done" v-on:click="checkTodoBox(todo)"/>
                 <span v-bind:class="{ completed: todo.done }">{{todo.name}}</span>
             </li>
         </ul>
@@ -16,6 +16,12 @@ export default {
     return {
  
     }
+  },
+
+  methods:{
+      checkTodoBox(todo){
+          this.$store.commit('FLIP_DONE', todo);
+      }
   }
 }
 </script>

@@ -173,6 +173,9 @@ export default {
         return this.filter === 0 ? true : this.filter === review.rating;
       });
     }
+
+    
+
   },
   methods: {
     addNewReview() {
