@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" v-bind:checked = "allSelected ==true" v-on:change="selectAll"/>
+            <input type="checkbox" id="selectAll" v-bind:checked = "allSelected == true" v-on:change="selectAll"/>
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -53,10 +53,10 @@
           <td>{{ user.status }}</td>
           <td>
             
-            <!-- NOT SURE HOW TO GET BOTH BUTTON TEXTS IN ONE BUTTON TAG, BUT THIS WAY WORKS WELL STILL -->
+           
             <button class="btnEnableDisable" v-on:click="flipStatus(user.id)" v-show="user.status==='Active'">Disable</button> 
             <button class="btnEnableDisable" v-on:click="flipStatus(user.id)" v-show="user.status==='Disabled'">Enable</button>
-           <!-- <button class="btnEnableDisable" v-show="user.status==='Disabled'" v-on:click="flipStatus(user.id)">Enable</button> -->
+   
           </td>
         </tr>
       </tbody>
@@ -199,10 +199,8 @@ export default {
       this.user = this.users.find( (user) => user.id === id);
       if(this.user.status === 'Disabled'){
         this.user.status = 'Active';
-        //this.button.text = 'Disable';
       }else{
         this.user.status = 'Disabled';
-        //this.button.text = 'Enable';
     }
     },
 
@@ -215,9 +213,6 @@ export default {
           this.selectedUserIDs=!this.selectedUserIDs;
           this.selectedUserIDs = [];
           this.allSelected = false;
-      
-        // this.user = this.users.find( (user) => this.selectedUserIDs.includes(user.id));
-        // this.user.status = 'Active';
       },
 
     disableSelectedUsers(){
@@ -246,10 +241,7 @@ export default {
     },
 
     selectAll(){
-      //this.selectedUserIDs=[];
-      // this.users.forEach( user => {
-      //   this.selectedUserIDs.push(user);
-      // })
+
       if(!this.allSelected){
         this.users.forEach( user => {
           this.selectedUserIDs.push(user.id);
