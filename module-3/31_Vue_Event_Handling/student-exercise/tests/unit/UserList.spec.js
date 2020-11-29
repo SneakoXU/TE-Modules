@@ -145,7 +145,7 @@ describe("UserList.vue", () => {
 
     it('enable/disable button in row should display Enable if user status is Disabled', () => {
       const buttons = wrapper.findAll('.btnEnableDisable');
-      buttons.at(2).text().should.equal('Enable')
+      buttons.at(1).text().should.equal('Enable')
     })
 
     it('should change the status when calling flip status', () => {
