@@ -1,9 +1,48 @@
 <template>
-  <div></div>
+  <div>
+    
+    <div class="loading" v-if="!isLoading">
+      <router-link v-bind:to="{name: 'Board', params: {id: $route.params.boardID}}">Return to Board</router-link>
+    </div>
+      <h1>{{card.title}}</h1>
+    <p>{{card.description}}</p>
+    <div class = "loading" v-if="isLoading">
+      <img src="../assets/ping_pong_loader.gif" alt="...Loading">
+    </div>
+  
+    <comments-list v-bind:comments="card.comments" v-else/>
+
+  </div>
 </template>
 
 <script>
+import BoardService from '../services/BoardService';
+import CommentsList from './CommentsList.vue';
 export default {
-  name: "card-detail"
+  name: "card-detail",
+  components: {
+    CommentsList
+  },
+  data(){
+    return{
+      isLoading: true,
+      card:{
+        title: '',
+        description: '',
+        status: '',
+        comments:[]
+      }
+    };
+  },
+
+  created(){
+    BoardService
+      .getCard(this.$route.params.boardID, this.$route.params.cardID)
+      .then(response => {
+        this.card = response;
+        this.isLoading = false;
+      })
+
+  }
 };
 </script>

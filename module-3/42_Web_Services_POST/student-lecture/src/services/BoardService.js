@@ -6,6 +6,14 @@ const http = axios.create({
 
 export default {
 
+  addBoard(board){
+    return http.post('/boards', board)
+  },
+
+  deleteBoard(boardID){
+    return http.delete(`/boards/${boardID}`)
+  },
+
   getBoards() {
     return http.get('/boards');
   },

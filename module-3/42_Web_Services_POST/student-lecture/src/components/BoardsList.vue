@@ -59,6 +59,23 @@ export default {
       });
     },
     saveNewBoard() {
+      this.isLoading = true;
+      boardsService.addBoard(this.newBoard)
+        .then(response => 
+        {
+          if(response.status === 201){
+            this.retrieveBoards();
+            this.showAddBoard = false;
+            
+          }
+          this.isLoading = false;
+        }
+        )
+        // .catch( error =>
+        // {
+        //   this.errorMsg = "Ya messed up, ya bum!"
+        // }
+        //);
 
     },
     randomBackgroundColor() {
