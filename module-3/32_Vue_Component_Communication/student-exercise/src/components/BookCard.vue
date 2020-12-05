@@ -6,8 +6,8 @@
     
     
     <!-- All of the tests for the read/unread buttons do not pass, but they seem to work correctly -->
-    <button class="mark-read" v-on:click="readStatus(book)" v-show="book.read == false">Mark Read</button>
-    <button class="mark-unread" v-on:click="readStatus(book)" v-show="book.read == true">Mark Unread</button>
+    <button class="mark-read" v-on:click.prevent="readStatus(book)" v-show="book.read == false">Mark Read</button>
+    <button class="mark-unread" v-on:click.prevent="readStatus(book)" v-show="book.read == true">Mark Unread</button>
   </div>
 </template>
 
